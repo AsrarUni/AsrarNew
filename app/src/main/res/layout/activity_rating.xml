@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/useful_light"
+    tools:context=".Activities.Rating_Activity">
+
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/Rating_drawer_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+       >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/useful_light">
+
+
+            <android.support.design.widget.CoordinatorLayout
+
+                android:id="@+id/upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/Rating_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/useful_dark"
+                    android:elevation="20dp"
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+                    <TextView
+                        android:id="@+id/txttestname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="امتیاز دهی"
+                        android:textColor="@color/useful_light"
+                        android:textSize="20sp" />
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.CoordinatorLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/upper_layout"
+                android:layout_margin="7dp"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+
+                    android:weightSum="10">
+
+                    <RatingBar
+                        android:id="@+id/Rating_Activity_Rb_Facilities"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5" />
+
+                    <TextView
+                        android:id="@+id/Rating_Activity_Tv_Facilities"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4.5"
+                        android:text="امکانات آموزشی"
+                        android:textColor="@color/useful_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <RatingBar
+                        android:id="@+id/Rating_Activity_Rb_Light_And_Air"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5" />
+
+                    <TextView
+                        android:id="@+id/Rating_Activity_Tv_Light_And_Air"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4.5"
+                        android:text="وضعیت نور و هوا"
+                        android:textColor="@color/useful_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+
+                    android:weightSum="10">
+
+                    <RatingBar
+                        android:id="@+id/Rating_Activity_Rb_Clean"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5" />
+
+                    <TextView
+                        android:id="@+id/Rating_Activity_Tv_Clean"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4.5"
+                        android:text="وضعیت نظافت کلاس"
+                        android:textColor="@color/useful_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+
+                    android:weightSum="10">
+
+                    <RatingBar
+                        android:id="@+id/Rating_Activity_Rb_Knowledge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5" />
+
+                    <TextView
+                        android:id="@+id/Rating_Activity_Tv_Knowledge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4.5"
+                        android:text="سطح علمی کلاس"
+                        android:textColor="@color/useful_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <RatingBar
+                        android:id="@+id/Rating_Activity_Rb_Progress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        />
+
+                    <TextView
+                        android:id="@+id/Rating_Activity_Tv_Progress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
+                        android:text="پیشرفت مطابق با برنامه"
+                        android:textColor="@color/useful_dark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/Rating_Activity_Btn_Save_Rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/rectangle"
+                    android:backgroundTint="@color/useful_dark"
+                    android:text="ثبت امتیاز"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:layoutDirection="rtl"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer">
+
+        </android.support.design.widget.NavigationView>
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+</android.support.constraint.ConstraintLayout>

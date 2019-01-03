@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="Present">#83ef9a</color>
+    <color name="Absent">#f17c7c</color>
+    <color name="useful_light">#e5dff5</color>
+    <color name="spinner_area">#cec2ef</color>
+    <color name="useful_dark">#06052d</color>
+</resources>
