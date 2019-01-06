@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Security_Activity"
+    android:background="@color/useful_dark">
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/Securuty_Img_Logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+
+        android:src="@drawable/logo_asrar_light"
+        android:layout_marginBottom="25dp"
+        />
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/Securuty_Mtv_Pass"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@+id/Securuty_Img_Logo"-->
+        <!--mask : mas/>-->
+
+    <wiadevelopers.com.library.MaskdEditText.MaskedEditText
+        xmlns:mask="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/Securuty_Mtv_Pass"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/rectangle"
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="phone"
+        android:paddingRight="8dp"
+        android:text=""
+        android:textColor="@color/useful_light"
+        android:textSize="20sp"
+        mask:mask="#-#-#-#"
+        android:layout_below="@+id/Securuty_Img_Logo"
+        />
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/Securuty_Mtv_Pass"
+        android:layout_margin="20dp"
+        android:background="@color/useful_light"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle"
+        android:layout_margin="16dp"
+        android:layout_below="@+id/separator"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:weightSum="3"
+            >
+
+
+            <TextView
+                android:id="@+id/Securuty_tv_num_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="1"
+                android:textSize="40sp"
+                android:tooltipText=""
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:id="@+id/Securuty_tv_num_2"
+                android:text="2"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="3"
+                android:id="@+id/Securuty_tv_num_3"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="3"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="4"
+                android:textSize="40sp"
+                android:id="@+id/Securuty_tv_num_4"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="5"
+                android:id="@+id/Securuty_tv_num_5"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="6"
+                android:gravity="center"
+                android:id="@+id/Securuty_tv_num_6"
+                android:textSize="40sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="3"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="7"
+                android:textSize="40sp"
+                android:id="@+id/Securuty_tv_num_7"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="8"
+                android:id="@+id/Securuty_tv_num_8"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="9"
+                android:id="@+id/Securuty_tv_num_9"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:id="@+id/Securuty_tv_del"
+                android:text="del"
+                android:textSize="40sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="0"
+                android:id="@+id/Securuty_tv_num_0"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/useful_light"
+                android:text="Ok"
+                android:id="@+id/Securuty_tv_ok"
+                android:gravity="center"
+                android:textSize="40sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

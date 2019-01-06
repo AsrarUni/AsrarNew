@@ -198,7 +198,7 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         Weekly_Tv_From_Date_To_Date = findViewById(R.id.Weekly_Tv_From_Date_To_Date);

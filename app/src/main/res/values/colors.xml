@@ -8,4 +8,10 @@
     <color name="useful_light">#e5dff5</color>
     <color name="spinner_area">#cec2ef</color>
     <color name="useful_dark">#06052d</color>
+
+    <color name="useful_dark_for_selector">#ce8684df</color>
+    <color name="trans">#00ffffff</color>
+
+
+
 </resources>

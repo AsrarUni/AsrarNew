@@ -61,7 +61,7 @@ public class Login_Activity extends AppCompatActivity {
     private void initialize() {
         findViews();
         showContainer_and_Items();
-        set_unreal_infos();
+//        set_unreal_infos();
         set_Listeners();
     }
 
