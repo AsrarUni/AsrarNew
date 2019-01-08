@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#bf837ed9"
+    android:background="@color/useful_dark"
     tools:context=".Activities.SplashScreenActivity">
 
     <ImageView
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:src="@drawable/logo_asrar"/>
+        android:src="@drawable/logo_asrar_light"/>
 
 </LinearLayout>

@@ -14,8 +14,8 @@
     <group android:checkableBehavior="single">
     <item
             android:id="@+id/nav_test1"
-            android:title="@string/Students_all"
-        android:icon="@drawable/ic_student"/>
+            android:title="@string/setting"
+        android:icon="@drawable/ic_setting"/>
     </group>
 
     <group android:checkableBehavior="single">

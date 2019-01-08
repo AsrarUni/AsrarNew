@@ -28,23 +28,30 @@ public class SplashScreenActivity extends AppCompatActivity {
 
 //----- chek if first time -----//
         String user_code = DivarUtils.readDataFromStorage(Constant.USER_CODE, null);
+        String is_has_pass = DivarUtils.readDataFromStorage(Constant.IS_HAS_PATTERN, null);
 
         if (user_code == null) {
 //----- baraye eejade yek vaghfeye 4 saniye ee -----//
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(SplashScreenActivity.this, Login_Activity.class);
-                    startActivity(intent);
+                    Intent intent1 = new Intent(SplashScreenActivity.this, Login_Activity.class);
+                    startActivity(intent1);
                     finish();
                 }
             }, 4000);
         } else {
-            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-            finish();
+            if (is_has_pass == null) {
+                Intent intent2 = new Intent(SplashScreenActivity.this, Login_Activity.class);
+                startActivity(intent2);
+                finish();
+            } else {
+                Intent intent3 = new Intent(SplashScreenActivity.this, Security_Activity.class);
+                startActivity(intent3);
+                finish();
+            }
         }
 
     }
-
 
 }

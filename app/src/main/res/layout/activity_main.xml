@@ -93,9 +93,11 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="fill_parent"
                         android:orientation="vertical"
-                        android:layout_marginTop="20dp">
+                        android:layout_margin="5dp"
+                        android:background="@drawable/selector_usefullight_purple"
+                        >
 
 
 
@@ -103,7 +105,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="110dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_margin="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="15dp"
                         android:src="@drawable/ic_classroom"
                         />
 
@@ -137,9 +142,11 @@
                     app:cardElevation="50dp">
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="fill_parent"
                         android:orientation="vertical"
-                        android:layout_marginTop="20dp">
+                        android:background="@drawable/selector_usefullight_purple"
+
+                        >
 
 
 
@@ -147,8 +154,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="110dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="15dp"
-                            android:src="@drawable/ic_commerce"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"                            android:src="@drawable/ic_commerce"
                             />
 
 
@@ -183,9 +192,10 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="fill_parent"
                         android:orientation="vertical"
-                        android:layout_marginTop="20dp">
+                        android:background="@drawable/selector_usefullight_purple"
+                        >
 
 
 
@@ -193,8 +203,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="110dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="15dp"
-                            android:src="@drawable/ic_student"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"                            android:src="@drawable/ic_student"
                             />
 
 
@@ -229,9 +241,10 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="fill_parent"
                         android:orientation="vertical"
-                        android:layout_marginTop="20dp">
+                        android:background="@drawable/selector_usefullight_purple"
+                        >
 
 
 
@@ -239,8 +252,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="110dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="15dp"
-                            android:src="@drawable/ic_building"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"                            android:src="@drawable/ic_building"
                             />
 
 

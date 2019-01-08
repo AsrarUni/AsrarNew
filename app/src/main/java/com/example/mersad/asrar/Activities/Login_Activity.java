@@ -391,7 +391,7 @@ public class Login_Activity extends AppCompatActivity {
     private void request() {
 //----- Web servise Login -----//
 
-        String url = "http://thtc.ir/nazer/api/emp/" + Login_edtUsername.getText().toString() + "/" + Login_edt_pass.getText().toString();
+        String url = Constant.Login_url + Login_edtUsername.getText().toString() + "/" + Login_edt_pass.getText().toString();
 
 //----- Eejade dialog dar hale etesal -----//
         final ProgressDialog pDialog;
@@ -408,16 +408,11 @@ public class Login_Activity extends AppCompatActivity {
                     Login_Tv_InsertUserPass.setText("شماره پرسنلی یا کلمه عبور اشتباه است");
                     Login_Tv_InsertUserPass.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.Absent));
                 } else {
-                    Gson gson = new Gson();
-                    Login_Entity _Login_Entity = gson.fromJson(response, Login_Entity.class);
-
-//----- set kardane liste info ke haman data az json ast dar klase cash -----//
-                    _Cash.setInfo(_Login_Entity.getData());
-                    _Cash.Fill_Cash_Info();
                     pDialog.dismiss();
                     Toast.makeText(Login_Activity.this, "ورود با موفقیت انجام شد", Toast.LENGTH_LONG).show();
-                    Intent login_ok = new Intent(Login_Activity.this, MainActivity.class);
+                    Intent login_ok = new Intent(Login_Activity.this, Security_Activity.class);
                     DivarUtils.writeDataInStorage(Constant.USER_CODE, Login_edtUsername.getText().toString());
+                    DivarUtils.writeDataInStorage(Constant.USER_PASS, Login_edt_pass.getText().toString());
                     startActivity(login_ok);
                     finish();
                 }

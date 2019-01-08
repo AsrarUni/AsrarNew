@@ -44,6 +44,7 @@
     <string name="If_specefic_date">آیا تاریخ خاصی را مد نظر دارید ؟</string>
     <string name="please_choose">لطفا انتخاب نمایید</string>
     <string name="Saturday">Saturday</string>
+    <string name="setting">تنظیمات</string>
 
     <string-array name="Date_Array">
         <item>روز</item>

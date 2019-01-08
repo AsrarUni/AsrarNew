@@ -25,12 +25,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mersad.asrar.Cash;
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Model.Class_List_Entity;
 import com.example.mersad.asrar.Model.Students_Attendance_Entity;
 import com.example.mersad.asrar.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import wiadevelopers.com.library.DivarUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -128,7 +131,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.nav_test1) {
 
-                    Toast.makeText(MainActivity.this, "test 1 successfull", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MainActivity.this, "test 1 successfull", Toast.LENGTH_LONG).show();
+
+                    Intent edt = new Intent (MainActivity.this , Setting_Activity.class);
+                    startActivity(edt);
 
                 }
                 if (item.getItemId() == R.id.nav_test2) {
@@ -199,8 +205,11 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this,"به زودی" , Toast.LENGTH_SHORT).show();
 //                String test = _Cash.getFname() +" "+ _Cash.getLname() ;
 //                txttestname.setText( test );
-                Intent sec = new Intent(MainActivity.this , Security_Activity.class);
-                startActivity(sec);
+//                Intent sec = new Intent(MainActivity.this , Security_Activity.class);
+//                startActivity(sec);
+
+                DivarUtils.writeDataInStorage(Constant.IS_HAS_PATTERN, "1234");
+                Toast.makeText(MainActivity.this , "Changed" , Toast.LENGTH_LONG).show();
             }
         });
 
