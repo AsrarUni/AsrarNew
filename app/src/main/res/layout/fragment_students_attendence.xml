@@ -1,12 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/useful_light"
     tools:context=".Fragments.Students_Attendance_Fragment">
 
-<Button
+    <Button
         android:id="@+id/btn_Save_Attendance_List"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -19,50 +19,53 @@
         android:textSize="25sp" />
 
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/Shimmer_recycle_Students_Attendance"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/Shimmer_recycle_Students_Attendance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:shimmer_duration="2000">
+
+        <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:shimmer_duration="2000">
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <include layout="@layout/item_shimmer_students_attendance" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
+            <include layout="@layout/item_shimmer_students_attendance" />
 
-                <include layout="@layout/item_shimmer_students_attendance" />
-                <include layout="@layout/item_shimmer_students_attendance" />
-                <include layout="@layout/item_shimmer_students_attendance" />
-                <include layout="@layout/item_shimmer_students_attendance" />
+            <include layout="@layout/item_shimmer_students_attendance" />
 
-            </LinearLayout>
+            <include layout="@layout/item_shimmer_students_attendance" />
 
-        </com.facebook.shimmer.ShimmerFrameLayout>
+        </LinearLayout>
 
-            <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/attendance_refresh"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:padding="7dp"
-                android:layout_below="@+id/above_layout_student_list">
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycle_Students_Attendance"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp" />
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/attendance_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/above_layout_student_list"
+        android:gravity="center_horizontal"
+        android:padding="7dp">
 
-                <TextView
-                    android:id="@+id/empty_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/eror"
-                    android:visibility="gone" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_Students_Attendance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" />
 
-            </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/eror"
+            android:visibility="gone" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

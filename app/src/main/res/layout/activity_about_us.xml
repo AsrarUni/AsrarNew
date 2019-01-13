@@ -7,85 +7,75 @@
     tools:context=".Activities.About_Us_Activity">
 
     <android.support.v4.widget.DrawerLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
         android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/useful_light">
-
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/activity_about_us_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#06052d"
-        android:elevation="20dp"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-
-        <TextView
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
+            android:layout_height="match_parent">
 
-            android:text="@string/about_company"
-
-            android:textColor="@color/useful_light"
-
-            android:textSize="30sp" />
-
-    </android.support.v7.widget.Toolbar>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/useful_light">
 
 
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/activity_about_us_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#06052d"
+                    android:elevation="20dp"
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
 
 
-        <ImageView
-            android:id="@+id/activity_about_us_pic"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/activity_about_us_toolbar"
-            android:src="@drawable/logo_asrar"
-            android:layout_marginTop="10dp"
-            />
+                        android:text="@string/about_company"
+                        android:textColor="@color/useful_light"
+                        android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/activity_about_us_tv_about_us"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/about_us"
-            android:padding="40dp"
-            android:layout_below="@+id/activity_about_us_pic"
-            />
+                </android.support.v7.widget.Toolbar>
 
 
+                <ImageView
+                    android:id="@+id/activity_about_us_pic"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/activity_about_us_toolbar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/logo_asrar" />
 
-</RelativeLayout>
-    </android.support.design.widget.CoordinatorLayout>
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/activity_about_us_nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_about_us_drawer"
-        android:layout_gravity="start">
-
-    </android.support.design.widget.NavigationView>
+                <TextView
+                    android:id="@+id/activity_about_us_tv_about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_about_us_pic"
+                    android:padding="40dp"
+                    android:text="@string/about_us" />
 
 
+            </RelativeLayout>
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/activity_about_us_nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_about_us_drawer">
+
+        </android.support.design.widget.NavigationView>
 
 
     </android.support.v4.widget.DrawerLayout>

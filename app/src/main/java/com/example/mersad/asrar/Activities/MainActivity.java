@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
     private void initialize(){
 
         set_unreal_infos();
-
         find_views();
         change_notification_color();
         set_on_clicks();
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
 
                 }
-                if (item.getItemId() == R.id.nav_test1) {
+                if (item.getItemId() == R.id.nav_setting) {
 
 //                    Toast.makeText(MainActivity.this, "test 1 successfull", Toast.LENGTH_LONG).show();
 
@@ -204,12 +203,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this,"به زودی" , Toast.LENGTH_SHORT).show();
 //                String test = _Cash.getFname() +" "+ _Cash.getLname() ;
-//                txttestname.setText( test );
-//                Intent sec = new Intent(MainActivity.this , Security_Activity.class);
-//                startActivity(sec);
+ Intent n = new Intent(MainActivity.this , Send_Message_To_Class_Activity.class);
+ startActivity(n);
 
-                DivarUtils.writeDataInStorage(Constant.IS_HAS_PATTERN, "1234");
-                Toast.makeText(MainActivity.this , "Changed" , Toast.LENGTH_LONG).show();
             }
         });
 

@@ -99,7 +99,7 @@ public class Student_Attendance_Tablayout_Activity extends AppCompatActivity {
                     finish();
 
                 }
-                if (item.getItemId() == R.id.nav_test1) {
+                if (item.getItemId() == R.id.nav_setting) {
 
                     Toast.makeText(Student_Attendance_Tablayout_Activity.this, "test 1 successfull", Toast.LENGTH_LONG).show();
 

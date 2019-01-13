@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@drawable/rectangle"
-    app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="#8cb7d7">
+    app:cardBackgroundColor="#8cb7d7"
+    app:cardCornerRadius="10dp">
 
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/background_blue"/>
+        android:src="@drawable/background_blue" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,16 +26,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right|end"
-            android:padding="7dp"
-            android:elevation="5dp"
             android:columnCount="3"
+            android:elevation="5dp"
+            android:padding="7dp"
             android:rowCount="5"
 
             >
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvLableClassName"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -43,8 +43,8 @@
                 android:text="@string/ClassName" />
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvLableClassCapacity"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -53,8 +53,8 @@
 
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvLableClassTime"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -62,8 +62,8 @@
                 android:text="@string/ClassTime" />
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvLableClassCode"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -72,8 +72,8 @@
 
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvLableClassLocation"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -81,8 +81,8 @@
                 android:text="@string/ClassLocation" />
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvClassName"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -90,8 +90,8 @@
                 android:text="@string/unknown" />
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvCapacityClass"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -100,8 +100,8 @@
 
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvClassTime"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -109,8 +109,8 @@
                 android:text="@string/unknown" />
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvClassCode"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -119,8 +119,8 @@
 
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvClassLocation"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -128,14 +128,13 @@
                 android:text="@string/unknown" />
 
 
-
         </GridLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
 
             <EditText
@@ -143,28 +142,27 @@
                 android:id="@+id/edtClassMemo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="5dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
+                android:layout_weight="1"
                 android:background="@drawable/rectangle"
-                android:hint="در صورت لزوم اینجا بنویسید" />
+                android:hint="در صورت لزوم اینجا بنویسید"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp" />
 
 
             <TextView
-                style="@style/TextViewModel"
                 android:id="@+id/tvLableClassMemo"
+                style="@style/TextViewModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="7dp"
-                android:textColor="#94171f"
-                android:text="توضیحات :" />
+                android:text="توضیحات :"
+                android:textColor="#94171f" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 </android.support.v7.widget.CardView>

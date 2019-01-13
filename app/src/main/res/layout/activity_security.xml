@@ -27,8 +27,7 @@
     <!--android:layout_below="@+id/Securuty_Img_Logo"-->
     <!--mask : mas/>-->
 
-    <wiadevelopers.com.library.MaskdEditText.MaskedEditText
-        xmlns:mask="http://schemas.android.com/apk/res-auto"
+    <wiadevelopers.com.library.MaskdEditText.MaskedEditText xmlns:mask="http://schemas.android.com/apk/res-auto"
         android:id="@+id/Securuty_Mtv_Pass"
         android:layout_width="300dp"
         android:layout_height="40dp"

@@ -48,7 +48,9 @@
         <activity android:name=".Activities.Edit_Password_Activity">
             android:windowSoftInputMode="stateHidden|adjustResize" />
         </activity>
-        <activity android:name=".Activities.Setting_Activity"></activity>
+        <activity android:name=".Activities.Setting_Activity" />
+        <activity android:name=".Activities.Send_Message_To_Class_Activity" />
+        <activity android:name=".Activities.Exams_Activity"></activity>
     </application>
 
 </manifest>

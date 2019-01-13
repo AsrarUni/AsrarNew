@@ -1,121 +1,114 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Find_Classes_By_Name_Fragment"
-    android:background="@color/useful_light">
+    android:background="@color/useful_light"
+    tools:context=".Fragments.Find_Classes_By_Name_Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/rectangle"
         android:layout_marginTop="10dp"
-        android:backgroundTint="@color/spinner_area">
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/spinner_area"
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
             <!--<CheckBox-->
-                <!--android:id="@+id/is_Specefic_Date"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="30dp"-->
-                <!--/>-->
+            <!--android:id="@+id/is_Specefic_Date"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--/>-->
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="لطفا تاریخ مورد نظر را انتخاب کنید"
                 android:textColor="@color/useful_dark"
-                android:layout_marginTop="5dp"
-                android:textSize="17sp"
-                />
+                android:textSize="17sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end"
             android:layout_margin="5dp"
+            android:gravity="end"
+            android:orientation="horizontal"
             android:weightSum="4">
 
             <Spinner
                 android:id="@+id/Spinner_getSemester"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:entries="@array/term_Array"
 
                 >
 
             </Spinner>
             <!--<TextView-->
-                <!--android:id="@+id/Tv_Lable_Spinner_getSemester"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="ترم"/>-->
+            <!--android:id="@+id/Tv_Lable_Spinner_getSemester"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ترم"/>-->
 
 
             <Spinner
                 android:id="@+id/Spinner_getYear"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:entries="@array/Year_Array"
-                >
+                android:layout_weight="1"
+                android:entries="@array/Year_Array">
 
             </Spinner>
             <!--<TextView-->
-                <!--android:id="@+id/Tv_Lable_Spinner_getYear"-->
+            <!--android:id="@+id/Tv_Lable_Spinner_getYear"-->
 
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="سال"/>-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="سال"/>-->
 
             <Spinner
                 android:id="@+id/Spinner_getMonth"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:entries="@array/Month_Array"
-                >
+                android:layout_weight="1"
+                android:entries="@array/Month_Array">
 
             </Spinner>
 
             <!--<TextView-->
-                <!--android:id="@+id/Tv_Lable_Spinner_getMonth"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="ماه"/>-->
+            <!--android:id="@+id/Tv_Lable_Spinner_getMonth"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ماه"/>-->
 
             <Spinner
                 android:id="@+id/Spinner_getDay"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:entries="@array/Date_Array"
-                >
+                android:layout_weight="1"
+                android:entries="@array/Date_Array">
 
             </Spinner>
 
             <!--<TextView-->
-                <!--android:id="@+id/Tv_Lable_Spinner_getDay"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="روز"/>-->
-
+            <!--android:id="@+id/Tv_Lable_Spinner_getDay"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="روز"/>-->
 
 
         </LinearLayout>
@@ -127,14 +120,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="لظفا تاریخ مورد نظر را انتخاب کرده و سپس صفحه را به پایین بکشید"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:gravity="center"
-        android:textColor="@color/useful_dark"
+        android:layout_margin="20dp"
         android:alpha="0.6"
-        android:layout_margin="20dp"/>
+        android:gravity="center"
+        android:text="لظفا تاریخ مورد نظر را انتخاب کرده و سپس صفحه را به پایین بکشید"
+        android:textColor="@color/useful_dark"
+        android:textSize="20dp" />
 
 
 </RelativeLayout>

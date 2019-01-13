@@ -12,8 +12,7 @@
         android:id="@+id/Rating_drawer_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:fitsSystemWindows="true"
-       >
+        android:fitsSystemWindows="true">
 
 
         <RelativeLayout
@@ -181,8 +180,7 @@
                         android:id="@+id/Rating_Activity_Rb_Progress"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        />
+                        android:layout_weight="6" />
 
                     <TextView
                         android:id="@+id/Rating_Activity_Tv_Progress"

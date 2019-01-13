@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/useful_dark"
-    tools:context=".Activities.Setting_Activity">
+    tools:context=".Activities.Exams_Activity">
+
 
 
     <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:fitsSystemWindows="true"
         tools:context="com.example.mersad.asrar.Activities.MainActivity">
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/useful_dark">
 
 
             <android.support.design.widget.CoordinatorLayout
@@ -47,7 +49,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:gravity="center"
-                        android:text="تنظیمات"
+                        android:text="برنامه امتحانات"
                         android:textColor="@color/useful_light"
                         android:textSize="20sp" />
 
@@ -56,16 +58,15 @@
 
             </android.support.design.widget.CoordinatorLayout>
 
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/Recycler_Exams"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/upper_layout"
+    android:background="@color/useful_light"
+    android:layout_margin="3dp">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/Setting_recycle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/upper_layout"
-                android:layout_margin="3dp"
-                android:background="@color/useful_light"
-
-                />
+</android.support.v7.widget.RecyclerView>
 
         </RelativeLayout>
 
@@ -84,5 +85,6 @@
 
 
     </android.support.v4.widget.DrawerLayout>
+
 
 </RelativeLayout>

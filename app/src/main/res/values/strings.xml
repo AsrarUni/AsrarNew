@@ -45,6 +45,7 @@
     <string name="please_choose">لطفا انتخاب نمایید</string>
     <string name="Saturday">Saturday</string>
     <string name="setting">تنظیمات</string>
+    <string name="SendMessageToClassStudentsHint">استاد ارجمند شما در حال فرستادن پیام به کل دانشجویان این کلاس میباشید ، توجه داشته باشید که پس از ارسال پیام امکان لغو کردن ارسال وجود ندارد و متن پیام پس از تایید اداره آموزش به کل دانشجویان کلاس ارسال خواهد شد</string>
 
     <string-array name="Date_Array">
         <item>روز</item>
