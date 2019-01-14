@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@drawable/rectangle"
-    app:cardBackgroundColor="#8cb7d7"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="#8cb7d7">
 
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/background_blue" />
+        android:src="@drawable/background_blue"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,25 +26,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right|end"
-            android:columnCount="3"
-            android:elevation="5dp"
             android:padding="7dp"
+            android:elevation="5dp"
+            android:columnCount="3"
             android:rowCount="5"
 
             >
 
             <TextView
-                android:id="@+id/tvLableClassName"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvLableClassName"
                 android:layout_column="2"
                 android:layout_row="0"
                 android:text="@string/ClassName" />
 
             <TextView
-                android:id="@+id/tvLableClassCapacity"
                 style="@style/TextViewModel"
+                android:id="@+id/tvLableClassCapacity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -53,79 +51,64 @@
 
 
             <TextView
-                android:id="@+id/tvLableClassTime"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvLableClassTime"
                 android:layout_column="2"
                 android:layout_row="2"
                 android:text="@string/ClassTime" />
 
             <TextView
-                android:id="@+id/tvLableClassCode"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvLableClassCode"
                 android:layout_column="2"
                 android:layout_row="3"
                 android:text="@string/ClassCode" />
 
 
             <TextView
-                android:id="@+id/tvLableClassLocation"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvLableClassLocation"
                 android:layout_column="2"
                 android:layout_row="4"
                 android:text="@string/ClassLocation" />
 
             <TextView
-                android:id="@+id/tvClassName"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvClassName"
                 android:layout_column="1"
                 android:layout_row="0"
                 android:text="@string/unknown" />
 
             <TextView
-                android:id="@+id/tvCapacityClass"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvCapacityClass"
                 android:layout_column="1"
                 android:layout_row="1"
                 android:text="@string/unknown" />
 
 
             <TextView
-                android:id="@+id/tvClassTime"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvClassTime"
                 android:layout_column="1"
                 android:layout_row="2"
                 android:text="@string/unknown" />
 
             <TextView
-                android:id="@+id/tvClassCode"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvClassCode"
                 android:layout_column="1"
                 android:layout_row="3"
                 android:text="@string/unknown" />
 
 
             <TextView
-                android:id="@+id/tvClassLocation"
                 style="@style/TextViewModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvClassLocation"
                 android:layout_column="1"
                 android:layout_row="4"
                 android:text="@string/unknown" />
+
 
 
         </GridLayout>
@@ -133,8 +116,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
 
 
             <EditText
@@ -142,27 +125,28 @@
                 android:id="@+id/edtClassMemo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/rectangle"
-                android:hint="در صورت لزوم اینجا بنویسید"
                 android:paddingLeft="4dp"
-                android:paddingRight="4dp" />
+                android:paddingRight="4dp"
+                android:background="@drawable/rectangle"
+                android:hint="در صورت لزوم اینجا بنویسید" />
 
 
             <TextView
-                android:id="@+id/tvLableClassMemo"
                 style="@style/TextViewModel"
+                android:id="@+id/tvLableClassMemo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="7dp"
-                android:text="توضیحات :"
-                android:textColor="#94171f" />
+                android:textColor="#94171f"
+                android:text="توضیحات :" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 
 
 </android.support.v7.widget.CardView>

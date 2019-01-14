@@ -51,6 +51,7 @@ public class Rating_Activity extends AppCompatActivity {
 
     }
 
+
     private void set_listeners() {
 
         Rating_Activity_Btn_Save_Rate.setOnClickListener(new View.OnClickListener() {
@@ -132,5 +133,25 @@ public class Rating_Activity extends AppCompatActivity {
         Rating_Activity_Btn_Save_Rate = findViewById(R.id.Rating_Activity_Btn_Save_Rate);
 
     }
+//
+//    public void ListenerForRatingBar(){
+//        Rating_Activity_Rb_Progress.setOnRatingBarChangeListener(
+//                new RatingBar.OnRatingBarChangeListener() {
+//                    @Override
+//                    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                        Rating_Activity_Tv_Progress.setText(String.valueOf(rating));
+//                        Toast.makeText(Rating_Activity.this, String.valueOf((int) Rating_Activity_Rb_Facilities.getRating()), Toast.LENGTH_SHORT).show();
+//
+//
+//                    }
+//                }
+//
+//
+//        );
+//
+//
+//
+//    }
+
 
 }

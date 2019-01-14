@@ -9,6 +9,9 @@
     </style>
 
     <style name="TextViewModel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">10dp</item>
         <item name="android:textColor">@color/useful_dark</item>
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">end</item>
@@ -16,7 +19,121 @@
         <item name="android:layout_gravity">right</item>
     </style>
 
+    <style name="categoriesLnrHoldCategoryItems">
+        <item name="android:gravity">center</item>
+        <item name="android:weightSum">100</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/selector_white_red</item>
+    </style>
 
+    <style name="NavigationView">
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:layout_gravity">start</item>
+
+    </style>
+
+    <style name="Toolbar">
+        <item name="android:elevation">20sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/useful_dark</item>
+    </style>
+
+    <style name="Linear_Card_Activity_Main">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/selector_usefullight_purple</item>
+
+    </style>
+
+    <style name="Img_Card_Activity_Main">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">110dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+
+    </style>
+
+    <style name="Text_Card_Activity_Main">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">110dp</item>
+        <item name="android:layout_gravity">bottom|center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">10dp</item>
+
+    </style>
+
+    <style name="RatingBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">0.5</item>
+        <item name="android:rating">2</item>
+        <item name="android:isIndicator">false</item>
+
+    </style>
+
+    <style name="TextView_Rating">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">4.5</item>
+        <item name="android:textColor">@color/useful_dark</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Textview_Activity_Security">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/selector_trans_blue</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/useful_light</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="LinearLayout_Activity_Security">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:weightSum">3</item>
+    </style>
+
+    <style name="Button_Dialog_Class_Opptions">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/useful_dark</item>
+        <item name="android:background">@drawable/edited_rectangle</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/useful_light</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Spinner_Fragment_Find_Class">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:entries">@array/Year_Array</item>
+
+    </style>
+
+    <style name="View_Item_Shimer_Class">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:background">#777777</item>
+    </style>
 
 </resources>
 

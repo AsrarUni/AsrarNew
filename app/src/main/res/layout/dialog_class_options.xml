@@ -1,70 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_root"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/useful_light"
-    android:orientation="vertical"
-    android:padding="16dp">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_root"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="16dp"
+              android:orientation="vertical"
+              android:background="@color/useful_light">
 
     <TextView
         android:id="@+id/Dialog_Class_Options_Tv_Class_Options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/please_choose"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="@string/please_choose"
         android:textColor="@color/useful_dark"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <Button
+        style="@style/Button_Dialog_Class_Opptions"
         android:id="@+id/Dialog_Class_Options_Btn_Cancell_Class"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edited_rectangle"
-        android:backgroundTint="@color/useful_dark"
         android:text="کنسل کردن کلاس"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/useful_light"
-        android:textSize="15sp" />
+        />
 
     <Button
         android:id="@+id/Dialog_Class_Options_Btn_Rate_Class"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edited_rectangle"
-        android:backgroundTint="@color/useful_dark"
+        style="@style/Button_Dialog_Class_Opptions"
         android:text="امتیاز ذهی به کلاس"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/useful_light"
-        android:textSize="15sp" />
+        />
 
     <Button
         android:id="@+id/Dialog_Class_Options_Btn_Send_Message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edited_rectangle"
-        android:backgroundTint="@color/useful_dark"
+        style="@style/Button_Dialog_Class_Opptions"
         android:text="ارسال پیام به دانشجویان کلاس"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/useful_light"
-        android:textSize="15sp" />
+        />
 
     <Button
         android:id="@+id/Dialog_Class_Options_Btn_Reminder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edited_rectangle"
-        android:backgroundTint="@color/useful_dark"
+        style="@style/Button_Dialog_Class_Opptions"
         android:text="یادآوری چیزی برای جلسه آینده"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/useful_light"
-        android:textSize="15sp"
 
         />
 

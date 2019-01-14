@@ -15,19 +15,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:layout_marginTop="30dp"
-
         android:src="@drawable/logo_asrar_light" />
 
 
-    <!--<TextView-->
-    <!--android:id="@+id/Securuty_Mtv_Pass"-->
-    <!--android:layout_width="300dp"-->
-    <!--android:layout_height="40dp"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_below="@+id/Securuty_Img_Logo"-->
-    <!--mask : mas/>-->
-
-    <wiadevelopers.com.library.MaskdEditText.MaskedEditText xmlns:mask="http://schemas.android.com/apk/res-auto"
+    <wiadevelopers.com.library.MaskdEditText.MaskedEditText
+        xmlns:mask="http://schemas.android.com/apk/res-auto"
         android:id="@+id/Securuty_Mtv_Pass"
         android:layout_width="300dp"
         android:layout_height="40dp"
@@ -75,149 +67,83 @@
         android:weightSum="4">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/LinearLayout_Activity_Security"
             android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3">
+           >
 
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="1"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp"
-                android:tooltipText="" />
+
+                 />
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="2"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+              />
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="3"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+             />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            style="@style/LinearLayout_Activity_Security"
+            >
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="4"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+              />
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="5"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+             />
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="6"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+              />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            style="@style/LinearLayout_Activity_Security"
+            >
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="7"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+              />
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="8"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+              />
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="9"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+               />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            style="@style/LinearLayout_Activity_Security"
+            >
 
             <ImageButton
                 android:id="@+id/Securuty_ib_del"
@@ -237,16 +163,10 @@
 
 
             <TextView
+                style="@style/Textview_Activity_Security"
                 android:id="@+id/Securuty_tv_num_0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_trans_blue"
-                android:clickable="true"
-                android:gravity="center"
                 android:text="0"
-                android:textColor="@color/useful_light"
-                android:textSize="40sp" />
+               />
 
             <TextView
                 android:id="@+id/Securuty_tv_ok"
