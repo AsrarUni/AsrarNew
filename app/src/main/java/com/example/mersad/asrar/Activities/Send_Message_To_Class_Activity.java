@@ -1,10 +1,22 @@
 package com.example.mersad.asrar.Activities;
 
+import android.app.AlarmManager;
+import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.RingtoneManager;
 import android.os.Build;
+import android.os.SystemClock;
+import android.provider.AlarmClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -24,6 +36,9 @@ import android.widget.Toast;
 import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.R;
 import com.example.mersad.asrar.Utils.JustifiedTextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Send_Message_To_Class_Activity extends AppCompatActivity {
 
@@ -47,6 +62,8 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
         initialize();
         change_notification_color();
         set_Listeners();
+//        scheduleNotification(getApplicationContext(), 2000,1 );
+        //baraye call kardane unayi ke chand item daran bayad be unha value bedim
 
 
 //        set_typefaces();
@@ -59,12 +76,68 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 1/10/2019 inja bayad matne justified text view ro begire befreste server
-                Intent m = new Intent(Send_Message_To_Class_Activity.this , Exams_Activity.class);
-                startActivity(m);
+//                Intent m = new Intent(Send_Message_To_Class_Activity.this , Exams_Activity.class);
+//                startActivity(m);
+
+
+                ArrayList<Integer> alarmDays= new ArrayList<Integer>();
+                alarmDays.add(Calendar.SUNDAY);
+                Intent alarm =new Intent(AlarmClock.ACTION_SET_ALARM);
+                alarm.putExtra(AlarmClock.EXTRA_HOUR,13);
+                alarm.putExtra(AlarmClock.EXTRA_MINUTES,30);
+                alarm.putExtra(AlarmClock.EXTRA_DAYS, alarmDays);
+                startActivity(alarm);
+
+                Calendar calendar =Calendar.getInstance();
+//                calendar.set(calendar.YEAR, 2019);
+                calendar.set(2019, Calendar.JANUARY, 22,11,30,15);
+
+//                calendar.set(calendar.HOUR_OF_DAY,14);
+//                calendar.set(calendar.MINUTE,18);
+//                calendar.set(calendar.SECOND,15);
+
+
+                Intent intent =new Intent(getApplicationContext(),MyNotificationPublisher.class);
+                PendingIntent pendingIntent =PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager =(AlarmManager)getSystemService(ALARM_SERVICE);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+
+
+
             }
         });
 
     }
+
+//    public void scheduleNotification(Context context, long delay, int notificationId) {//delay is after how much time(in millis) from current time you want to schedule the notification
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+//                .setContentTitle(context.getString(R.string.insert_user_pass))
+//                .setContentText(context.getString(R.string.pull_down))
+//                .setAutoCancel(true)
+//                .setSmallIcon(R.drawable.haghighi)
+//                .setLargeIcon(((BitmapDrawable) context.getResources().getDrawable(R.drawable.haghighi)).getBitmap())
+//                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+//
+//        Intent intent = new Intent(context, Send_Message_To_Class_Activity.class);
+//        PendingIntent activity = PendingIntent.getActivity(context, notificationId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+//        builder.setContentIntent(activity);
+//
+//        Notification notification = builder.build();
+//
+//        Intent notificationIntent = new Intent(context, MyNotificationPublisher.class);
+//        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId);
+//        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification );
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+//
+//        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+//        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+//        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+//    }
+
+
+
+
+
 
 
 
@@ -156,6 +229,10 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
                     Toast.makeText(Send_Message_To_Class_Activity.this, "test 2 successfull", Toast.LENGTH_LONG).show();
 
                 }
+                if (item.getItemId() ==R.id.nav_exit){
+                  finishAffinity();
+                }
+
 
 
                 return false;
