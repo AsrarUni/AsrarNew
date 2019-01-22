@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -61,6 +62,16 @@ public class MainActivity extends AppCompatActivity {
         _Cash = (Cash) getApplication();
         initialize();
 
+//         model_class = new Class_List_Entity();
+//        khali.ClassName = "شما در این روز کلاسی ندارید" ;
+//        khali.ClassTime = "1";
+//        khali.ClassCode = 0;
+//        khali.ClassLocation = "a";
+//        khali.ClassCapacity = "b";
+//        khali.isCanseled = false ;
+//
+//        _Cash.setList_Class_null(khali);
+
 //----- ijade yek timere kotah baraye ejraye animaton ha -----//
         new CountDownTimer(1, 1000) {
             @Override
@@ -80,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         set_unreal_infos();
         find_views();
         change_notification_color();
-        set_on_clicks();
+        set_listeners();
         setup_toolbar();
         setup_navigation();
         setup_swipe_refresh();
@@ -146,9 +157,15 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
 
+
         });
 
+
+
+
+
     }
+
 
     private void setup_toolbar (){
 
@@ -178,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void set_on_clicks (){
+    private void set_listeners (){
         Activity_Main_Cv_Today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this,"به زودی" , Toast.LENGTH_SHORT).show();
 //                String test = _Cash.getFname() +" "+ _Cash.getLname() ;
- Intent n = new Intent(MainActivity.this , Send_Message_To_Class_Activity.class);
+ Intent n = new Intent(MainActivity.this , Remember_Activity.class);
  startActivity(n);
 
             }
@@ -330,143 +347,154 @@ public class MainActivity extends AppCompatActivity {
 //----------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------
-        List<Class_List_Entity> List_Class0 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class1 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class2 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
-
-        Class_List_Entity ObjClass00 = new Class_List_Entity();
-        ObjClass00.ClassName = "اندیشه 1";
-        ObjClass00.ClassCapacity = "32 نفر";
-        ObjClass00.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
-        ObjClass00.ClassCode = 123;
-        ObjClass00.ClassLocation = "دانشکده مهندسی-کلاس 214";
-        ObjClass00.isCanseled = false;
-        List_Class0.add(ObjClass00);
-
-        Class_List_Entity ObjClass01 = new Class_List_Entity();
-        ObjClass01.ClassName = "اخلاق اسلامی";
-        ObjClass01.ClassCapacity = "40 نفر";
-        ObjClass01.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
-        ObjClass01.ClassCode = 214;
-        ObjClass01.ClassLocation = "دانشکده مهندسی-کلاس 342";
-        ObjClass01.isCanseled = true;
-        List_Class0.add(ObjClass01);
-
-        //------------------------------------
-
-        Class_List_Entity ObjClass10 = new Class_List_Entity();
-        ObjClass10.ClassName = "اندیشه 1";
-        ObjClass10.ClassCapacity = "32 نفر";
-        ObjClass10.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
-        ObjClass10.ClassCode = 123;
-        ObjClass10.ClassLocation = "دانشکده مهندسی-کلاس 214";
-        ObjClass10.isCanseled = false;
-        List_Class1.add(ObjClass10);
-
-        Class_List_Entity ObjClass11 = new Class_List_Entity();
-        ObjClass11.ClassName = "اخلاق اسلامی";
-        ObjClass11.ClassCapacity = "40 نفر";
-        ObjClass11.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
-        ObjClass11.ClassCode = 214;
-        ObjClass11.ClassLocation = "دانشکده مهندسی-کلاس 342";
-        ObjClass11.isCanseled = true;
-        List_Class1.add(ObjClass11);
-
-        //------------------------------------
-
-        Class_List_Entity ObjClass20 = new Class_List_Entity();
-        ObjClass20.ClassName = "اندیشه 1";
-        ObjClass20.ClassCapacity = "32 نفر";
-        ObjClass20.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
-        ObjClass20.ClassCode = 123;
-        ObjClass20.ClassLocation = "دانشکده مهندسی-کلاس 214";
-        ObjClass20.isCanseled = false;
-        List_Class2.add(ObjClass20);
-
-        Class_List_Entity ObjClass21 = new Class_List_Entity();
-        ObjClass21.ClassName = "اخلاق اسلامی";
-        ObjClass21.ClassCapacity = "40 نفر";
-        ObjClass21.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
-        ObjClass21.ClassCode = 214;
-        ObjClass21.ClassLocation = "دانشکده مهندسی-کلاس 342";
-        ObjClass21.isCanseled = true;
-        List_Class2.add(ObjClass21);
-
-        //------------------------------------
-
-        Class_List_Entity ObjClass30 = new Class_List_Entity();
-        ObjClass30.ClassName = "اندیشه 1";
-        ObjClass30.ClassCapacity = "32 نفر";
-        ObjClass30.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
-        ObjClass30.ClassCode = 123;
-        ObjClass30.ClassLocation = "دانشکده مهندسی-کلاس 214";
-        ObjClass30.isCanseled = false;
-        List_Class3.add(ObjClass30);
-
-        Class_List_Entity ObjClass31 = new Class_List_Entity();
-        ObjClass31.ClassName = "اخلاق اسلامی";
-        ObjClass31.ClassCapacity = "40 نفر";
-        ObjClass31.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
-        ObjClass31.ClassCode = 214;
-        ObjClass31.ClassLocation = "دانشکده مهندسی-کلاس 342";
-        ObjClass31.isCanseled = true;
-        List_Class3.add(ObjClass31);
-
-        //------------------------------------
-
-        Class_List_Entity ObjClass40 = new Class_List_Entity();
-        ObjClass40.ClassName = "اندیشه 1";
-        ObjClass40.ClassCapacity = "32 نفر";
-        ObjClass40.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
-        ObjClass40.ClassCode = 123;
-        ObjClass40.ClassLocation = "دانشکده مهندسی-کلاس 214";
-        ObjClass40.isCanseled = false;
-        List_Class4.add(ObjClass40);
-
-        Class_List_Entity ObjClass41 = new Class_List_Entity();
-        ObjClass41.ClassName = "اخلاق اسلامی";
-        ObjClass41.ClassCapacity = "40 نفر";
-        ObjClass41.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
-        ObjClass41.ClassCode = 214;
-        ObjClass41.ClassLocation = "دانشکده مهندسی-کلاس 342";
-        ObjClass41.isCanseled = true;
-        List_Class4.add(ObjClass41);
-
-        //------------------------------------
-
-        Class_List_Entity ObjClass50 = new Class_List_Entity();
-        ObjClass50.ClassName = "اندیشه 1";
-        ObjClass50.ClassCapacity = "32 نفر";
-        ObjClass50.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
-        ObjClass50.ClassCode = 123;
-        ObjClass50.ClassLocation = "دانشکده مهندسی-کلاس 214";
-        ObjClass50.isCanseled = false;
-        List_Class5.add(ObjClass50);
-
-        Class_List_Entity ObjClass51 = new Class_List_Entity();
-        ObjClass51.ClassName = "اخلاق اسلامی";
-        ObjClass51.ClassCapacity = "40 نفر";
-        ObjClass51.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
-        ObjClass51.ClassCode = 214;
-        ObjClass51.ClassLocation = "دانشکده مهندسی-کلاس 342";
-        ObjClass51.isCanseled = true;
-        List_Class5.add(ObjClass51);
-
-
-//-----por kardane etelaate farzi dar kelase cash-----//
-        _Cash.setList_Students(List_test);
-        _Cash.setList_Class_0Shanbe(List_Class0);
-        _Cash.setList_Class_1Shanbe(List_Class1);
-        _Cash.setList_Class_2Shanbe(List_Class2);
-        _Cash.setList_Class_3Shanbe(List_Class3);
-        _Cash.setList_Class_4Shanbe(List_Class4);
-        _Cash.setList_Class_5Shanbe(List_Class5);
+//        List<Class_List_Entity> List_Class0 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class1 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class2 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
+//
+//        Class_List_Entity ObjClass00 = new Class_List_Entity();
+//        ObjClass00.ClassName = "اندیشه 1";
+//        ObjClass00.ClassCapacity = "32 نفر";
+//        ObjClass00.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
+//        ObjClass00.ClassCode = 123;
+//        ObjClass00.ClassLocation = "دانشکده مهندسی-کلاس 214";
+//        ObjClass00.isCanseled = false;
+//        List_Class0.add(ObjClass00);
+//
+//        Class_List_Entity ObjClass01 = new Class_List_Entity();
+//        ObjClass01.ClassName = "اخلاق اسلامی";
+//        ObjClass01.ClassCapacity = "40 نفر";
+//        ObjClass01.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
+//        ObjClass01.ClassCode = 214;
+//        ObjClass01.ClassLocation = "دانشکده مهندسی-کلاس 342";
+//        ObjClass01.isCanseled = true;
+//        List_Class0.add(ObjClass01);
+//
+//        //------------------------------------
+//
+//        Class_List_Entity ObjClass10 = new Class_List_Entity();
+//        ObjClass10.ClassName = "اندیشه 1";
+//        ObjClass10.ClassCapacity = "32 نفر";
+//        ObjClass10.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
+//        ObjClass10.ClassCode = 123;
+//        ObjClass10.ClassLocation = "دانشکده مهندسی-کلاس 214";
+//        ObjClass10.isCanseled = false;
+//        List_Class1.add(ObjClass10);
+//
+//        Class_List_Entity ObjClass11 = new Class_List_Entity();
+//        ObjClass11.ClassName = "اخلاق اسلامی";
+//        ObjClass11.ClassCapacity = "40 نفر";
+//        ObjClass11.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
+//        ObjClass11.ClassCode = 214;
+//        ObjClass11.ClassLocation = "دانشکده مهندسی-کلاس 342";
+//        ObjClass11.isCanseled = true;
+//        List_Class1.add(ObjClass11);
+//
+//        //------------------------------------
+//
+//        Class_List_Entity ObjClass20 = new Class_List_Entity();
+//        ObjClass20.ClassName = "اندیشه 1";
+//        ObjClass20.ClassCapacity = "32 نفر";
+//        ObjClass20.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
+//        ObjClass20.ClassCode = 123;
+//        ObjClass20.ClassLocation = "دانشکده مهندسی-کلاس 214";
+//        ObjClass20.isCanseled = false;
+//        List_Class2.add(ObjClass20);
+//
+//        Class_List_Entity ObjClass21 = new Class_List_Entity();
+//        ObjClass21.ClassName = "اخلاق اسلامی";
+//        ObjClass21.ClassCapacity = "40 نفر";
+//        ObjClass21.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
+//        ObjClass21.ClassCode = 214;
+//        ObjClass21.ClassLocation = "دانشکده مهندسی-کلاس 342";
+//        ObjClass21.isCanseled = true;
+//        List_Class2.add(ObjClass21);
+//
+//        //------------------------------------
+//
+//        Class_List_Entity ObjClass30 = new Class_List_Entity();
+//        ObjClass30.ClassName = "اندیشه 1";
+//        ObjClass30.ClassCapacity = "32 نفر";
+//        ObjClass30.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
+//        ObjClass30.ClassCode = 123;
+//        ObjClass30.ClassLocation = "دانشکده مهندسی-کلاس 214";
+//        ObjClass30.isCanseled = false;
+//        List_Class3.add(ObjClass30);
+//
+//        Class_List_Entity ObjClass31 = new Class_List_Entity();
+//        ObjClass31.ClassName = "اخلاق اسلامی";
+//        ObjClass31.ClassCapacity = "40 نفر";
+//        ObjClass31.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
+//        ObjClass31.ClassCode = 214;
+//        ObjClass31.ClassLocation = "دانشکده مهندسی-کلاس 342";
+//        ObjClass31.isCanseled = true;
+//        List_Class3.add(ObjClass31);
+//
+//        //------------------------------------
+//
+//        Class_List_Entity ObjClass40 = new Class_List_Entity();
+//        ObjClass40.ClassName = "اندیشه 1";
+//        ObjClass40.ClassCapacity = "32 نفر";
+//        ObjClass40.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
+//        ObjClass40.ClassCode = 123;
+//        ObjClass40.ClassLocation = "دانشکده مهندسی-کلاس 214";
+//        ObjClass40.isCanseled = false;
+//        List_Class4.add(ObjClass40);
+//
+//        Class_List_Entity ObjClass41 = new Class_List_Entity();
+//        ObjClass41.ClassName = "اخلاق اسلامی";
+//        ObjClass41.ClassCapacity = "40 نفر";
+//        ObjClass41.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
+//        ObjClass41.ClassCode = 214;
+//        ObjClass41.ClassLocation = "دانشکده مهندسی-کلاس 342";
+//        ObjClass41.isCanseled = true;
+//        List_Class4.add(ObjClass41);
+//
+//        //------------------------------------
+//
+//        Class_List_Entity ObjClass50 = new Class_List_Entity();
+//        ObjClass50.ClassName = "اندیشه 1";
+//        ObjClass50.ClassCapacity = "32 نفر";
+//        ObjClass50.ClassTime = "شنبه 8-10 و دو شنبه 14-16";
+//        ObjClass50.ClassCode = 123;
+//        ObjClass50.ClassLocation = "دانشکده مهندسی-کلاس 214";
+//        ObjClass50.isCanseled = false;
+//        List_Class5.add(ObjClass50);
+//
+//        Class_List_Entity ObjClass51 = new Class_List_Entity();
+//        ObjClass51.ClassName = "اخلاق اسلامی";
+//        ObjClass51.ClassCapacity = "40 نفر";
+//        ObjClass51.ClassTime = "سه شنبه 12-10 و چهار شنبه 14-12";
+//        ObjClass51.ClassCode = 214;
+//        ObjClass51.ClassLocation = "دانشکده مهندسی-کلاس 342";
+//        ObjClass51.isCanseled = true;
+//        List_Class5.add(ObjClass51);
+//
+//
+////-----por kardane etelaate farzi dar kelase cash-----//
+//        _Cash.setList_Students(List_test);
+//        _Cash.setList_Class_0Shanbe(List_Class0);
+//        _Cash.setList_Class_1Shanbe(List_Class1);
+//        _Cash.setList_Class_2Shanbe(List_Class2);
+//        _Cash.setList_Class_3Shanbe(List_Class3);
+//        _Cash.setList_Class_4Shanbe(List_Class4);
+//        _Cash.setList_Class_5Shanbe(List_Class5);
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
+    }
 
 }
 

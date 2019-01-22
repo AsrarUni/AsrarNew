@@ -20,8 +20,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mersad.asrar.Activities.Rating_Activity;
+import com.example.mersad.asrar.Activities.Remember_Activity;
+import com.example.mersad.asrar.Activities.Send_Message_To_Class_Activity;
 import com.example.mersad.asrar.Activities.Student_Attendance_Tablayout_Activity;
 import com.example.mersad.asrar.Cash;
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Model.Class_List_Entity;
 import com.example.mersad.asrar.Holder.Class_List_Holder;
 import com.example.mersad.asrar.Model.model_time;
@@ -40,16 +43,26 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
     List<Class_List_Entity> List_Class;
     Cash _Cash;
     public Activity _Activity;
-    int what_day;
+//    int what_day;
 
-    public Class_List_Adapter(android.content.Context Context, Activity activity, List<Class_List_Entity> List_Class, int day) {
+//    public Class_List_Adapter(android.content.Context Context, Activity activity, List<Class_List_Entity> List_Class, int day) {
+//        custom_font = Typeface.createFromAsset(Context.getAssets(), "fonts/koodak.ttf");
+//        this.Context = Context;
+//        _Activity = activity;
+//        _Cash = (Cash) _Activity.getApplication();
+////        List_Class = _Cash.Fill_List_Class();
+//        this.List_Class = List_Class;
+////        this.what_day = day;
+//    }
+
+    public Class_List_Adapter(android.content.Context Context, Activity activity, List<Class_List_Entity> List_Class) {
         custom_font = Typeface.createFromAsset(Context.getAssets(), "fonts/koodak.ttf");
         this.Context = Context;
         _Activity = activity;
         _Cash = (Cash) _Activity.getApplication();
 //        List_Class = _Cash.Fill_List_Class();
         this.List_Class = List_Class;
-        this.what_day = day;
+//        this.what_day = day;
     }
 
 
@@ -185,38 +198,38 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
                     List_Class.get(position).isCanseled = false;
                     Toast.makeText(Context, " کلاس تشکیل میشود ", Toast.LENGTH_SHORT).show();
 
-                    switch (what_day) {
-
-                        case 0:
-                            _Cash.setList_Class_0Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 1:
-                            _Cash.setList_Class_1Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 2:
-                            _Cash.setList_Class_2Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 3:
-                            _Cash.setList_Class_3Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 4:
-                            _Cash.setList_Class_4Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 5:
-                            _Cash.setList_Class_5Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-                    }
+//                    switch (what_day) {
+//
+//                        case 0:
+//                            _Cash.setList_Class_0Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 1:
+//                            _Cash.setList_Class_1Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 2:
+//                            _Cash.setList_Class_2Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 3:
+//                            _Cash.setList_Class_3Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 4:
+//                            _Cash.setList_Class_4Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 5:
+//                            _Cash.setList_Class_5Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//                    }
 
                     notifyDataSetChanged();
 
@@ -224,38 +237,38 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
                     List_Class.get(position).isCanseled = true;
                     Toast.makeText(Context, " کلاس تشکیل نمیشود ", Toast.LENGTH_SHORT).show();
 
-                    switch (what_day) {
-
-                        case 0:
-                            _Cash.setList_Class_0Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 1:
-                            _Cash.setList_Class_1Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 2:
-                            _Cash.setList_Class_2Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 3:
-                            _Cash.setList_Class_3Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 4:
-                            _Cash.setList_Class_4Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-
-                        case 5:
-                            _Cash.setList_Class_5Shanbe(List_Class);
-                            alertDialog.dismiss();
-                            break;
-                    }
+//                    switch (what_day) {
+//
+//                        case 0:
+//                            _Cash.setList_Class_0Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 1:
+//                            _Cash.setList_Class_1Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 2:
+//                            _Cash.setList_Class_2Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 3:
+//                            _Cash.setList_Class_3Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 4:
+//                            _Cash.setList_Class_4Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//
+//                        case 5:
+//                            _Cash.setList_Class_5Shanbe(List_Class);
+//                            alertDialog.dismiss();
+//                            break;
+//                    }
 
 
                     notifyDataSetChanged();
@@ -270,6 +283,32 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
             public void onClick(View v) {
                 Intent rate = new Intent( Context , Rating_Activity.class);
                 _Activity.startActivity(rate);
+            }
+        });
+
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent message = new Intent(Context , Send_Message_To_Class_Activity.class);
+//                --------------------------------------------------------------------------------------
+                String cc = String.valueOf(List_Class.get(position).ClassCode);
+                message.putExtra(Constant.Code_Class , cc );
+                _Activity.startActivity(message);
+
+            }
+        });
+
+        remind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent remember = new Intent(Context , Remember_Activity.class);
+//                --------------------------------------------------------------------------------------
+                String clc = String.valueOf(List_Class.get(position).ClassCode);
+                remember.putExtra(Constant.Code_Class , clc );
+                _Activity.startActivity(remember);
+
             }
         });
 

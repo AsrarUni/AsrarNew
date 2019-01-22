@@ -39,13 +39,16 @@
     <string name="PersonalNumber">شماره پرسنلی</string>
     <string name="DateBirthday">تاریخ تولد</string>
     <string name="TypeID">سمت</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="If_specefic_date">آیا تاریخ خاصی را مد نظر دارید ؟</string>
     <string name="please_choose">لطفا انتخاب نمایید</string>
     <string name="Saturday">Saturday</string>
     <string name="setting">تنظیمات</string>
-    <string name="SendMessageToClassStudentsHint">استاد ارجمند شما در حال فرستادن پیام به کل دانشجویان این کلاس میباشید ، توجه داشته باشید که پس از ارسال پیام امکان لغو کردن ارسال وجود ندارد و متن پیام پس از تایید اداره آموزش به کل دانشجویان کلاس ارسال خواهد شد</string>
+    <string name="SendMessageToClassStudentsHint1">استاد ارجمند شما در حال فرستادن پیام به کل دانشجویان کلاس کد </string>
+    <string name="SendMessageToClassStudentsHint2">میباشید ، توجه داشته باشید که پس از ارسال پیام امکان لغو کردن ارسال وجود ندارد و متن پیام پس از تایید اداره آموزش به کل دانشجویان کلاس ارسال خواهد شد </string>
+    <string name="Remember_For">یاد آوری برای :</string>
+    <string name="message_text">متن پیام</string>
+    <string name="replace_note">شما برای این کلاس در تاریخ انتخاب شده قبلا یاد داشتی ثبت کرده اید . آیا میخواهید جایگزین شود ؟</string>
 
     <string-array name="Date_Array">
         <item>روز</item>
@@ -111,6 +114,8 @@
         <item>دوم</item>
         <item>تابستان</item>
     </string-array>
+    <string name="title_activity_reminder_">Reminder_Activity</string>
+    <string name="title_of_reminder">عنوان یادآوری :</string>
 
 
 </resources>

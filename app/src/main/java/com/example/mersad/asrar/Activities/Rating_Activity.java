@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -131,6 +132,18 @@ public class Rating_Activity extends AppCompatActivity {
         drawer = findViewById(R.id.Rating_drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         Rating_Activity_Btn_Save_Rate = findViewById(R.id.Rating_Activity_Btn_Save_Rate);
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
 
     }
 //

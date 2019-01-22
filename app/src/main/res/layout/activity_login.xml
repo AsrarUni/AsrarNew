@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/id"
-            android:text="666"
+            android:text="609"
             android:textColorHint="#FFFFFF"
             android:visibility="invisible"
             tools:ignore="TextFields" />
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/pass"
-            android:text="123456"
+            android:text="654321"
             android:textColorHint="#FFFFFF"
             android:visibility="invisible" />
 

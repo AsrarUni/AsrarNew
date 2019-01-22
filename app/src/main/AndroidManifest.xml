@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:name=".Cash"
@@ -20,7 +21,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.Login_Activity" />
         <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Students_Attendance.Students_Aattendance_Activity" />
 
         <service android:name=".Notification.MyFirebaceMessagingService">
             <intent-filter>
@@ -29,7 +29,6 @@
         </service>
 
         <activity android:name=".Activities.About_Us_Activity" />
-        <activity android:name=".Class_List.Today_classes.Class_List_Activity" />
         <activity android:name=".Activities.Weekly_Class_Tab_Activity" />
         <activity android:name=".Activities.Employment_Info_Activity" />
         <activity android:name=".Activities.Student_Attendance_Tablayout_Activity" />
@@ -43,14 +42,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        />
         <activity android:name=".Activities.Security_Activity" />
-        <activity android:name=".Activities.Edit_Password_Activity">
+        <activity
+            android:name=".Activities.Edit_Password_Activity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        </activity>
         <activity android:name=".Activities.Setting_Activity" />
         <activity android:name=".Activities.Send_Message_To_Class_Activity" />
-        <activity android:name=".Activities.Exams_Activity"></activity>
+        <activity android:name=".Activities.Exams_Activity" />
+        <activity
+            android:name=".Activities.Remember_Activity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".Activities.Remind_Activity"></activity>
     </application>
 
 </manifest>

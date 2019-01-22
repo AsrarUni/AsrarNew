@@ -1,5 +1,6 @@
 package com.example.mersad.asrar.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -33,10 +34,20 @@ public class Class_List_Fragment extends Fragment {
     private TextView empty_view_class;
     Context _Context;
     Activity _Activity;
-    public int what_day;
+//    public int what_day;
 
     public Class_List_Fragment() {
 
+    }
+//    public Class_List_Fragment(List<Class_List_Entity> List_Class) {
+//
+//        DataList = List_Class ;
+//    }
+
+
+    @SuppressLint("ValidFragment")
+    public Class_List_Fragment(List<Class_List_Entity> dataList) {
+        DataList = dataList;
     }
 
     @Override
@@ -78,33 +89,39 @@ public class Class_List_Fragment extends Fragment {
             empty_view_class = view.findViewById(R.id.empty_view_class);
 
 
-            switch (what_day) {
-
-                case 0:
-                    DataList = _Cash.getList_Class_0Shanbe();
-                    break;
-
-                case 1:
-                    DataList = _Cash.getList_Class_1Shanbe();
-                    break;
-
-                case 2:
-                    DataList = _Cash.getList_Class_2Shanbe();
-                    break;
-
-                case 3:
-                    DataList = _Cash.getList_Class_3Shanbe();
-                    break;
-
-                case 4:
-                    DataList = _Cash.getList_Class_4Shanbe();
-                    break;
-
-                case 5:
-                    DataList = _Cash.getList_Class_5Shanbe();
-                    break;
-
-            }
+//            switch (what_day) {
+////
+////                case 0:
+////                    DataList = _Cash.getList_Class_0Shanbe();
+////                    break;
+////
+////                case 1:
+////                    if (_Cash.getList_Class_1Shanbe()==null)
+////                        DataList = _Cash.getList_Class_0Shanbe();
+////                    else
+////                    DataList = _Cash.getList_Class_1Shanbe();
+////                    break;
+////
+////                case 2:
+////                    DataList = _Cash.getList_Class_2Shanbe();
+////                    break;
+////
+////                case 3:
+////                    DataList = _Cash.getList_Class_3Shanbe();
+////                    break;
+////
+////                case 4:
+////                    DataList = _Cash.getList_Class_4Shanbe();
+////                    break;
+////
+////                case 5:
+////                    if (_Cash.getList_Class_5Shanbe()==null)
+////                        DataList = _Cash.getList_Class_0Shanbe();
+////                    else
+////                        DataList = _Cash.getList_Class_5Shanbe();
+////                    break;
+////
+////            }
 
             recycle_class_list.setVisibility(View.GONE);
             empty_view_class.setVisibility(View.VISIBLE);
@@ -126,7 +143,9 @@ public class Class_List_Fragment extends Fragment {
 
                     recycle_class_list.setVisibility(View.VISIBLE);
                     empty_view_class.setVisibility(View.GONE);
-                    adapter = new Class_List_Adapter(_Context, _Activity, List_Class, what_day);
+//                    adapter = new Class_List_Adapter(_Context, _Activity, List_Class, what_day);
+                    adapter = new Class_List_Adapter(_Context, _Activity, List_Class);
+
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(_Context, LinearLayoutManager.VERTICAL, false);
                     recycle_class_list.setLayoutManager(linearLayoutManager);
                     recycle_class_list.setAdapter(adapter);

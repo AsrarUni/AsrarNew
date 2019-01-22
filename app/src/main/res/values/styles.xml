@@ -122,6 +122,15 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="Button_Dialog_Class_Opptions_For_Replace">
+        <item name="android:backgroundTint">@color/useful_dark</item>
+        <item name="android:background">@drawable/edited_rectangle</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/useful_light</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="Spinner_Fragment_Find_Class">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -131,10 +140,15 @@
     </style>
 
     <style name="View_Item_Shimer_Class">
-        <item name="android:layout_width">71dp</item>
+        <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">18dp</item>
         <item name="android:background">#777777</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>
 

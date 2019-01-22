@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@color/useful_light">
+
+
+
+    <TextView
+        android:id="@+id/Dialog_Class_Options_Tv_Class_Options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/replace_note"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/useful_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Button_Dialog_Class_Opptions_For_Replace"
+            android:id="@+id/Dialog_duolicate_replace"
+            android:text="جایگزین شود"
+            android:layout_marginRight="5dp"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/Dialog_duolicate_cancell"
+            style="@style/Button_Dialog_Class_Opptions_For_Replace"
+            android:layout_marginLeft="5dp"
+            android:text="انصراف"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

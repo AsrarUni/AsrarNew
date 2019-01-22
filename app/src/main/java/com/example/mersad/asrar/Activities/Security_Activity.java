@@ -1,6 +1,7 @@
 package com.example.mersad.asrar.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -22,9 +23,15 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.mersad.asrar.Cash;
 import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Model.Login_Entity;
+import com.example.mersad.asrar.Model.model_time;
 import com.example.mersad.asrar.R;
 import com.example.mersad.asrar.Utils.AppSingleton;
+import com.example.mersad.asrar.Volley_WebService.FetchDataListener;
+import com.example.mersad.asrar.Volley_WebService.GETAPIRequest;
+import com.example.mersad.asrar.Volley_WebService.RequestQueueService;
 import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import wiadevelopers.com.library.DivarUtils;
 import wiadevelopers.com.library.MaskdEditText.MaskedEditText;
@@ -63,6 +70,7 @@ public class Security_Activity extends AppCompatActivity {
 
 
 //        start_animations();
+
 
 
     }
@@ -114,6 +122,7 @@ public class Security_Activity extends AppCompatActivity {
                 }else{
                     String true_pass = DivarUtils.readDataFromStorage(Constant.IS_HAS_PATTERN, null);
                     if (Securuty_Mtv_Pass.getRawText().trim().equals(true_pass) ) {
+                        getApiCall("http://thtc.ir/nazer/api/date", Security_Activity.this);
                         request();
                     }
                     else {
@@ -253,7 +262,6 @@ public class Security_Activity extends AppCompatActivity {
 
     }
 
-
     private void change_notification_color(){
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -283,6 +291,83 @@ public class Security_Activity extends AppCompatActivity {
                     ok.performClick();
             }
         });
+
+
+    }
+
+
+//    ------------------------------------------------------WS--------------------------------------------------------------------
+
+    private void getApiCall(String url, Context context) {
+
+        try {
+
+            GETAPIRequest getapiRequest = new GETAPIRequest();
+            getapiRequest.request(context, fetchGetResultListener, url);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Implementing interfaces of FetchDataListener for GET api request
+    FetchDataListener fetchGetResultListener = new FetchDataListener() {
+
+        @Override
+        public void onFetchComplete(JSONObject data) {
+            RequestQueueService.cancelProgressDialog();
+            try {
+                if (data != null) {
+
+                    Pars_Json(data.toString());
+
+                } else {
+                    RequestQueueService.showAlert("Error! No data fetched", Security_Activity.this);
+                }
+
+            } catch (Exception e) {
+                RequestQueueService.showAlert("Something went wrong", Security_Activity.this);
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onFetchFailure(String msg) {
+            RequestQueueService.cancelProgressDialog();
+            //Show if any error message is there called from GETAPIRequest class
+            RequestQueueService.showAlert(msg, Security_Activity.this);
+        }
+
+        @Override
+        public void onFetchStart() {
+            //Start showing progressbar or any loader you have
+            RequestQueueService.showProgressDialog(Security_Activity.this);
+        }
+    };
+
+
+    private void Pars_Json(String data) {
+        Gson gson = new Gson();
+
+        model_time _model_time = gson.fromJson(data, model_time.class);
+
+        String miladi_date = _model_time.getDate();
+        String miladi_day = _model_time.getDay();
+
+
+        String[] parts = miladi_date.split("/");
+
+
+        String Year = parts[0];
+        String m_d = parts[1];
+        String[] parts2 = m_d.split("-");
+        String Month = parts2[0];
+        String Day = parts2[1];
+
+        _Cash.setCash_day(Day);
+        _Cash.setCash_month(Month);
+        _Cash.setCash_year(Year);
+        _Cash.setCash_what_date(miladi_day);
 
 
     }

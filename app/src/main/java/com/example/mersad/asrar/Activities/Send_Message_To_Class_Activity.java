@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.R;
 import com.example.mersad.asrar.Utils.JustifiedTextView;
 
@@ -32,16 +34,20 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private NavigationView navigationView;
-
+    String Class_Code ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message_to_class);
 
+        Intent intent = getIntent();
+        Class_Code = intent.getStringExtra(Constant.Code_Class);
+
         initialize();
         change_notification_color();
         set_Listeners();
+
 
 //        set_typefaces();
 
@@ -80,7 +86,8 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
 
     private void Setup_Justified_TextView() {
 
-        jtv_SendMessageToClassStudentsHint.setText(getString(R.string.SendMessageToClassStudentsHint));
+
+        jtv_SendMessageToClassStudentsHint.setText(getString(R.string.SendMessageToClassStudentsHint1) + Class_Code + getString(R.string.SendMessageToClassStudentsHint2) );
         jtv_SendMessageToClassStudentsHint.setTextSize(TypedValue.COMPLEX_UNIT_SP , 15);
 
     }
@@ -168,5 +175,16 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
+    }
 
 }

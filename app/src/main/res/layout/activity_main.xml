@@ -218,10 +218,6 @@
         </RelativeLayout>
 
 
-        <!--<include-->
-        <!--android:layout="@layout/app_bar_main">-->
-        <!--</include>-->
-
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
             style="@style/NavigationView"

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -23,11 +24,20 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.mersad.asrar.Cash;
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Fragments.Find_Classes_By_Name_Fragment;
 import com.example.mersad.asrar.Fragments.Class_List_Fragment;
+import com.example.mersad.asrar.Model.Class_List_Entity;
+import com.example.mersad.asrar.Model.Login_Entity;
+import com.example.mersad.asrar.Model.model_class;
 import com.example.mersad.asrar.Model.model_time;
 import com.example.mersad.asrar.R;
+import com.example.mersad.asrar.Utils.AppSingleton;
 import com.example.mersad.asrar.Utils.Util_Tablayout;
 import com.example.mersad.asrar.Volley_WebService.FetchDataListener;
 import com.example.mersad.asrar.Volley_WebService.GETAPIRequest;
@@ -38,9 +48,13 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
+import wiadevelopers.com.library.DivarUtils;
 
 
 public class Weekly_Class_Tab_Activity extends AppCompatActivity {
@@ -54,13 +68,23 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
     TextView Weekly_Tv_From_Date_To_Date;
     Typeface custom_font;
 
-    Class_List_Fragment Shanbe = new Class_List_Fragment();
-    Class_List_Fragment Yek_Shanbe = new Class_List_Fragment();
-    Class_List_Fragment Do_Shanbe = new Class_List_Fragment();
-    Class_List_Fragment Se_Shanbe = new Class_List_Fragment();
-    Class_List_Fragment Chahar_Shanbe = new Class_List_Fragment();
-    Class_List_Fragment Panj_Shanbe = new Class_List_Fragment();
-    Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
+//    Class_List_Fragment Shanbe = new Class_List_Fragment();
+//    Class_List_Fragment Yek_Shanbe = new Class_List_Fragment();
+//    Class_List_Fragment Do_Shanbe = new Class_List_Fragment();
+//    Class_List_Fragment Se_Shanbe = new Class_List_Fragment();
+//    Class_List_Fragment Chahar_Shanbe = new Class_List_Fragment();
+//    Class_List_Fragment Panj_Shanbe = new Class_List_Fragment();
+//    Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
+
+
+    Class_List_Fragment Shanbe ;
+    Class_List_Fragment Yek_Shanbe ;
+    Class_List_Fragment Do_Shanbe ;
+    Class_List_Fragment Se_Shanbe ;
+    Class_List_Fragment Chahar_Shanbe ;
+    Class_List_Fragment Panj_Shanbe ;
+    Find_Classes_By_Name_Fragment kanseli_jobrani ;
+
 
     ProgressDialog pDialog;
 
@@ -73,6 +97,10 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
     Date StartOfWeek;
     Date EndOfWeek;
 
+    String Start_day_for_ws;
+    String End_day_for_ws;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,14 +110,13 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
         initialize();
 
 //----- tayine rooze hafte baraye har obj -----//
-        Shanbe.what_day = 0;
-        Yek_Shanbe.what_day = 1;
-        Do_Shanbe.what_day = 2;
-        Se_Shanbe.what_day = 3;
-        Chahar_Shanbe.what_day = 4;
-        Panj_Shanbe.what_day = 5;
+//        Shanbe.what_day = 0;
+//        Yek_Shanbe.what_day = 1;
+//        Do_Shanbe.what_day = 2;
+//        Se_Shanbe.what_day = 3;
+//        Chahar_Shanbe.what_day = 4;
+//        Panj_Shanbe.what_day = 5;
 
-        getApiCall("http://thtc.ir/nazer/api/date", Weekly_Class_Tab_Activity.this);
 
     }
 
@@ -103,15 +130,36 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
         set_typefaces();
         set_listeners();
         setup_progress_dialog();
-        setup_viewpager();
 
+        get_data();
+        setup_viewpager();
     }
+
+    private void get_data() {
+
+        String Username = DivarUtils.readDataFromStorage(Constant.USER_CODE, null);
+//        String url = Constant.Class_url + Start_day_for_ws + "/" + End_day_for_ws + "/" + Username;
+        String url = Constant.Class_url + "2018-12-02" + "/" +"2019-01-24" + "/" + Username;
+
+//        getApiCall(url, Weekly_Class_Tab_Activity.this);
+
+        request(url);
+    }
+
 
     private void setup_viewpager() {
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(7);
+
+        String Today = _Cash.getCash_day() + "/" + _Cash.getCash_month() + "/" + _Cash.getCash_year();
+
+        Today_Date_Local = Today;
+        Today_Day_Local = _Cash.getCash_what_date();
+        Today_Date = _Cash.getCash_fulldate();
+
+        set_week_days();
 
     }
 
@@ -236,57 +284,7 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
     }
 
-//    ------------------------------------------------------WS--------------------------------------------------------------------
-
-    private void getApiCall(String url, Context context) {
-
-        try {
-
-            GETAPIRequest getapiRequest = new GETAPIRequest();
-            getapiRequest.request(context, fetchGetResultListener, url);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    //Implementing interfaces of FetchDataListener for GET api request
-    FetchDataListener fetchGetResultListener = new FetchDataListener() {
-
-        @Override
-        public void onFetchComplete(JSONObject data) {
-            RequestQueueService.cancelProgressDialog();
-            try {
-                if (data != null) {
-
-                    Pars_Json(data.toString());
-
-                } else {
-                    RequestQueueService.showAlert("Error! No data fetched", Weekly_Class_Tab_Activity.this);
-                }
-
-            } catch (Exception e) {
-                RequestQueueService.showAlert("Something went wrong", Weekly_Class_Tab_Activity.this);
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onFetchFailure(String msg) {
-            RequestQueueService.cancelProgressDialog();
-            //Show if any error message is there called from GETAPIRequest class
-            RequestQueueService.showAlert(msg, Weekly_Class_Tab_Activity.this);
-        }
-
-        @Override
-        public void onFetchStart() {
-            //Start showing progressbar or any loader you have
-            RequestQueueService.showProgressDialog(Weekly_Class_Tab_Activity.this);
-        }
-    };
-
-//    -----------------------------------------------------------------------------------------------------------------------------
-
+    //---------------------------------------------------------------------
     private void set_week_days() {
 
         try {
@@ -305,6 +303,8 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
                 _sat.add(Calendar.DATE, 5);
                 EndOfWeek = _sat.getTime();
                 set_Date_Text();
+
+
                 break;
 
             case "Sunday":
@@ -399,36 +399,6 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
     }
 
-    private void Pars_Json(String data) {
-
-        Gson gson = new Gson();
-
-        model_time _model_time = gson.fromJson(data, model_time.class);
-
-        String miladi_date = _model_time.getDate();
-        String miladi_day = _model_time.getDay();
-
-
-        String[] parts = miladi_date.split("/");
-
-
-        String Year = parts[0];
-        String m_d = parts[1];
-        String[] parts2 = m_d.split("-");
-        String Month = parts2[0];
-        String Day = parts2[1];
-
-        int year = Integer.parseInt(Year);
-        int month = Integer.parseInt(Month);
-        int day = Integer.parseInt(Day);
-
-        String Today = Day + "/" + Month + "/" + Year;
-
-        Today_Date_Local = Today;
-        Today_Day_Local = miladi_day;
-
-        set_week_days();
-    }
 
     private void set_Date_Text() {
 
@@ -438,6 +408,254 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
         Weekly_Tv_From_Date_To_Date.setText(start_s + "   تا   " + end_s);
 
+        DateFormat dateFormat_ws = new SimpleDateFormat("yyyy-MM-dd");
+
+
+        Start_day_for_ws = dateFormat_ws.format(StartOfWeek);
+        End_day_for_ws = dateFormat_ws.format(EndOfWeek);
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
+    }
+
+//
+//    private void getApiCall(String url, Context context) {
+//
+//        try {
+//
+//            GETAPIRequest getapiRequest = new GETAPIRequest();
+//            getapiRequest.request(context, fetchGetResultListener, url);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    //Implementing interfaces of FetchDataListener for GET api request
+//    FetchDataListener fetchGetResultListener = new FetchDataListener() {
+//
+//        @Override
+//        public void onFetchComplete(JSONObject data) {
+//            RequestQueueService.cancelProgressDialog();
+//            try {
+//                if (data != null) {
+//
+//                    Pars_Json(data.toString());
+//
+//                } else {
+//                    RequestQueueService.showAlert("Error! No data fetched", Weekly_Class_Tab_Activity.this);
+//                }
+//
+//            } catch (Exception e) {
+//                RequestQueueService.showAlert("Something went wrong", Weekly_Class_Tab_Activity.this);
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        @Override
+//        public void onFetchFailure(String msg) {
+//            RequestQueueService.cancelProgressDialog();
+//            //Show if any error message is there called from GETAPIRequest class
+//            RequestQueueService.showAlert(msg, Weekly_Class_Tab_Activity.this);
+//        }
+//
+//        @Override
+//        public void onFetchStart() {
+//            //Start showing progressbar or any loader you have
+//            RequestQueueService.showProgressDialog(Weekly_Class_Tab_Activity.this);
+//        }
+//
+//    };
+
+
+    private void Pars_Json(String data) {
+        Gson gson = new Gson();
+        model_class[] _model_class = gson.fromJson(data, model_class[].class);
+
+        List<Class_List_Entity> List_Class0 = new ArrayList<Class_List_Entity>();
+        List<Class_List_Entity> List_Class1 = new ArrayList<Class_List_Entity>();
+        List<Class_List_Entity> List_Class2 = new ArrayList<Class_List_Entity>();
+        List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
+        List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
+        List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
+
+
+
+        for (int i = 0; i < _model_class.length; i++) {
+
+            switch (_model_class[i].getDayOfWeek()) {
+
+
+                case "Saturday":
+
+                    Class_List_Entity shanbe = new Class_List_Entity();
+
+                    shanbe.ClassCode = _model_class[i].getClassID();
+                    shanbe.ClassName = _model_class[i].getClassName();
+                    shanbe.ClassCapacity = String.valueOf(_model_class[i].getCapacity());
+                    String Class_number_Shanbe = _model_class[i].getClassPosition();
+                    String Facility_Shanbe = _model_class[i].getFacility();
+                    shanbe.ClassLocation = Class_number_Shanbe + " کلاس " + Facility_Shanbe;
+                    shanbe.ClassTime = "" + _model_class[i].getTime();
+                    // TODO: 1/20/2019 felan hame hoozoor hastand
+                    shanbe.isCanseled = false;
+
+                    List_Class0.add(shanbe);
+
+                    break;
+
+                case "Sunday":
+
+                    Class_List_Entity yekshanbe = new Class_List_Entity();
+
+                    yekshanbe.ClassCode = _model_class[i].getClassID();
+                    yekshanbe.ClassName = _model_class[i].getClassName();
+                    yekshanbe.ClassCapacity = String.valueOf(_model_class[i].getCapacity());
+                    String Class_number_yekshanbe = _model_class[i].getClassPosition();
+                    String Facility_yekshanbe = _model_class[i].getFacility();
+                    yekshanbe.ClassLocation = Class_number_yekshanbe + " کلاس " + Facility_yekshanbe;
+                    yekshanbe.ClassTime = "" + _model_class[i].getTime();
+                    yekshanbe.isCanseled = false;
+
+                    List_Class1.add(yekshanbe);
+
+                    break;
+
+                case "Monday":
+
+                    Class_List_Entity doshanbe = new Class_List_Entity();
+
+                    doshanbe.ClassCode = _model_class[i].getClassID();
+                    doshanbe.ClassName = _model_class[i].getClassName();
+                    doshanbe.ClassCapacity = String.valueOf(_model_class[i].getCapacity());
+                    String Class_number_doshanbe = _model_class[i].getClassPosition();
+                    String Facility_doshanbe = _model_class[i].getFacility();
+                    doshanbe.ClassLocation = Class_number_doshanbe + " کلاس " + Facility_doshanbe;
+                    doshanbe.ClassTime = "" + _model_class[i].getTime();
+                    doshanbe.isCanseled = false;
+
+                    List_Class2.add(doshanbe);
+
+                    break;
+
+                case "Tuesday":
+
+                    Class_List_Entity seshanbe = new Class_List_Entity();
+
+                    seshanbe.ClassCode = _model_class[i].getClassID();
+                    seshanbe.ClassName = _model_class[i].getClassName();
+                    seshanbe.ClassCapacity = String.valueOf(_model_class[i].getCapacity());
+                    String Class_number_seshanbe = _model_class[i].getClassPosition();
+                    String Facility_seshanbe = _model_class[i].getFacility();
+                    seshanbe.ClassLocation = Class_number_seshanbe + " کلاس " + Facility_seshanbe;
+                    seshanbe.ClassTime = "" + _model_class[i].getTime();
+                    seshanbe.isCanseled = false;
+
+                    List_Class3.add(seshanbe);
+
+                    break;
+
+                case "Wednesday":
+                    Class_List_Entity charshanbe = new Class_List_Entity();
+
+                    charshanbe.ClassCode = _model_class[i].getClassID();
+                    charshanbe.ClassName = _model_class[i].getClassName();
+                    charshanbe.ClassCapacity = String.valueOf(_model_class[i].getCapacity());
+                    String Class_number_charshanbe = _model_class[i].getClassPosition();
+                    String Facility_charshanbe = _model_class[i].getFacility();
+                    charshanbe.ClassLocation = Class_number_charshanbe + " کلاس " + Facility_charshanbe;
+                    charshanbe.ClassTime = "" + _model_class[i].getTime();
+                    charshanbe.isCanseled = false;
+
+                    List_Class4.add(charshanbe);
+
+                    break;
+
+                case "Thursday ":
+                    Class_List_Entity panjshanbe = new Class_List_Entity();
+
+                    panjshanbe.ClassCode = _model_class[i].getClassID();
+                    panjshanbe.ClassName = _model_class[i].getClassName();
+                    panjshanbe.ClassCapacity = String.valueOf(_model_class[i].getCapacity());
+                    String Class_number_panjshanbe = _model_class[i].getClassPosition();
+                    String Facility_panjshanbe = _model_class[i].getFacility();
+                    panjshanbe.ClassLocation = Class_number_panjshanbe + " کلاس " + Facility_panjshanbe;
+                    panjshanbe.ClassTime = "" + _model_class[i].getTime();
+                    panjshanbe.isCanseled = false;
+
+                    List_Class5.add(panjshanbe);
+
+                    break;
+
+
+            }
+
+        }
+
+//        _Cash.setList_Class_0Shanbe(List_Class0);
+//        _Cash.setList_Class_1Shanbe(List_Class1);
+//        _Cash.setList_Class_2Shanbe(List_Class2);
+//        _Cash.setList_Class_3Shanbe(List_Class3);
+//        _Cash.setList_Class_4Shanbe(List_Class4);
+//        _Cash.setList_Class_5Shanbe(List_Class5);
+
+
+        Shanbe = new Class_List_Fragment(List_Class0);
+         Yek_Shanbe = new Class_List_Fragment(List_Class1);
+         Do_Shanbe = new Class_List_Fragment(List_Class2);
+         Se_Shanbe = new Class_List_Fragment(List_Class3);
+         Chahar_Shanbe = new Class_List_Fragment(List_Class4);
+         Panj_Shanbe = new Class_List_Fragment(List_Class5);
+        Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
+
+    }
+
+    private void request(String uurrll) {
+
+//----- Eejade dialog dar hale etesal -----//
+        final ProgressDialog pDialog;
+        pDialog = new ProgressDialog(Weekly_Class_Tab_Activity.this);
+        pDialog.setMessage("در حال اتصال");
+        pDialog.setCancelable(false);
+        pDialog.show();
+
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("Error!")) {
+                    pDialog.dismiss();
+                    Toast.makeText(Weekly_Class_Tab_Activity.this, "eror", Toast.LENGTH_SHORT).show();
+                } else {
+                    pDialog.dismiss();
+                    Pars_Json(response);
+
+                }
+            }
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pDialog.dismiss();
+                Toast.makeText(Weekly_Class_Tab_Activity.this, "خطا در اتصال", Toast.LENGTH_LONG).show();
+            }
+        };
+
+        StringRequest request = new StringRequest(Request.Method.GET, uurrll, listener, errorListener);
+        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+    }
+
+
 }
+
+
+

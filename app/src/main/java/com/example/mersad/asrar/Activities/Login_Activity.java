@@ -274,13 +274,13 @@ public class Login_Activity extends AppCompatActivity {
 
 
 //-----por kardane etelaate farzi dar kelase cash-----//
-        _Cash.setList_Students(List_test);
-        _Cash.setList_Class_0Shanbe(List_Class0);
-        _Cash.setList_Class_1Shanbe(List_Class1);
-        _Cash.setList_Class_2Shanbe(List_Class2);
-        _Cash.setList_Class_3Shanbe(List_Class3);
-        _Cash.setList_Class_4Shanbe(List_Class4);
-        _Cash.setList_Class_5Shanbe(List_Class5);
+//        _Cash.setList_Students(List_test);
+//        _Cash.setList_Class_0Shanbe(List_Class0);
+//        _Cash.setList_Class_1Shanbe(List_Class1);
+//        _Cash.setList_Class_2Shanbe(List_Class2);
+//        _Cash.setList_Class_3Shanbe(List_Class3);
+//        _Cash.setList_Class_4Shanbe(List_Class4);
+//        _Cash.setList_Class_5Shanbe(List_Class5);
 
     }
 
