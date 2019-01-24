@@ -21,7 +21,7 @@ public class MyNotificationPublisher extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-    Intent repeating_intent = new Intent(context ,Weekly_Class_Tab_Activity.class);
+    Intent repeating_intent = new Intent(context ,Week_Days_Class_activity.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     PendingIntent pendingIntent =PendingIntent.getActivity(context,100,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
     NotificationCompat.Builder builder = new NotificationCompat.Builder(context)

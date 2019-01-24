@@ -1,9 +1,13 @@
 package com.example.mersad.asrar.Activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.R;
@@ -24,6 +28,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+
+        change_notification_color();
 
 
 //----- chek if first time -----//
@@ -53,5 +59,24 @@ public class SplashScreenActivity extends AppCompatActivity {
         }
 
     }
+
+    private void change_notification_color(){
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Window window = SplashScreenActivity.this.getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(SplashScreenActivity.this,R.color.useful_dark));
+
+        }
+    }
+
 
 }

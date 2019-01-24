@@ -23,7 +23,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.example.mersad.asrar.Cash;
+import com.example.mersad.asrar.Model.Class_List_Entity;
 import com.example.mersad.asrar.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class About_Us_Activity extends AppCompatActivity {
 
@@ -34,13 +39,35 @@ public class About_Us_Activity extends AppCompatActivity {
     TextView activity_about_us_tv_about_us;
     Typeface custom_font;
 
+//    Cash _Cash ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
+//        _Cash = (Cash) getApplication();
+
         initialize();
+
+//        activity_about_us_tv_about_us.setText("hi");
+//        activity_about_us_tv_about_us.append(_Cash.getCash_day() + "\n");
+//        activity_about_us_tv_about_us.append( _Cash.getFname()    + "\n");
+//        activity_about_us_tv_about_us.append(   _Cash.getCash_what_date()  + "\n");
+//        List<Class_List_Entity> List_Class0 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class1 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class2 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
+//
+//        List_Class0 = _Cash.getList_Class_0Shanbe();
+//        List_Class1 = _Cash.getList_Class_1Shanbe();
+//        List_Class2 = _Cash.getList_Class_2Shanbe();
+//        List_Class3 = _Cash.getList_Class_3Shanbe();
+//        List_Class4 = _Cash.getList_Class_4Shanbe();
+//        List_Class5 = _Cash.getList_Class_5Shanbe();
+
 
     }
 

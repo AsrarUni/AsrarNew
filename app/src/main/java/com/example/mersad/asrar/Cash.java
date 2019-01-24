@@ -1,12 +1,30 @@
 package com.example.mersad.asrar;
 
+import android.app.Activity;
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.mersad.asrar.Activities.MainActivity;
+import com.example.mersad.asrar.Activities.Security_Activity;
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Model.Class_List_Entity;
 import com.example.mersad.asrar.Model.Login_Entity;
 import com.example.mersad.asrar.Model.Students_Attendance_Entity;
 import com.example.mersad.asrar.Model.Students_Attendance_teacherform_Entity;
+import com.example.mersad.asrar.Utils.AppSingleton;
+import com.example.mersad.asrar.Volley_WebService.FetchDataListener;
+import com.example.mersad.asrar.Volley_WebService.GETAPIRequest;
+import com.example.mersad.asrar.Volley_WebService.RequestQueueService;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +34,8 @@ import io.realm.RealmConfiguration;
 import wiadevelopers.com.library.DivarUtils;
 
 public class Cash extends Application {
+
+//    ---------------------------------- set global setting ----------------------------------------
 
     @Override
     public void onCreate() {
@@ -37,6 +57,7 @@ public class Cash extends Application {
 //        List_Class_null.add(khali);
     }
 
+//    ----------------------------- handle lists ---------------------------------------------------
 
 //----- Liste Daneshjooyan baraye namayesh dar recycler view ------//
     List<Students_Attendance_Entity> List_Students;
@@ -245,77 +266,77 @@ public class Cash extends Application {
 
 
 
-//
-//    //----- Liste kelas ha baraye namayesh dar recycler view ------//
-//    List<Class_List_Entity>List_Class_0Shanbe;
-//    List<Class_List_Entity>List_Class_1Shanbe;
-//    List<Class_List_Entity>List_Class_2Shanbe;
-//    List<Class_List_Entity>List_Class_3Shanbe;
-//    List<Class_List_Entity>List_Class_4Shanbe;
-//    List<Class_List_Entity>List_Class_5Shanbe;
-//
-//
-//    public List<Class_List_Entity> getList_Class_null() {
-//        return List_Class_null;
-//    }
-//
-//    public void setList_Class_null(List<Class_List_Entity> list_Class_null) {
-//        List_Class_null = list_Class_null;
-//    }
-//
-//    List<Class_List_Entity>List_Class_null;
-//
-//
-//
-////----- Liste class ha ra bar migardanad va set mikonad ------//
-//
-//    public List<Class_List_Entity> getList_Class_0Shanbe() {
-//        return this.List_Class_0Shanbe;
-//    }
-//
-//    public void setList_Class_0Shanbe(List<Class_List_Entity> jadid) {
-//       this.List_Class_0Shanbe = jadid ;
-//    }
-//
-//    public List<Class_List_Entity> getList_Class_1Shanbe() {
-//        return this.List_Class_1Shanbe;
-//    }
-//
-//    public void setList_Class_1Shanbe(List<Class_List_Entity> jadid) {
-//        this.List_Class_1Shanbe = jadid ;
-//    }
-//
-//    public List<Class_List_Entity> getList_Class_2Shanbe() {
-//        return this.List_Class_2Shanbe;
-//    }
-//
-//    public void setList_Class_2Shanbe(List<Class_List_Entity> jadid) {
-//        this.List_Class_2Shanbe = jadid ;
-//    }
-//
-//    public List<Class_List_Entity> getList_Class_3Shanbe() {
-//        return this.List_Class_3Shanbe;
-//    }
-//
-//    public void setList_Class_3Shanbe(List<Class_List_Entity> jadid) {
-//        this.List_Class_3Shanbe = jadid ;
-//    }
-//
-//    public List<Class_List_Entity> getList_Class_4Shanbe() {
-//        return this.List_Class_4Shanbe;
-//    }
-//
-//    public void setList_Class_4Shanbe(List<Class_List_Entity> jadid) {
-//        this.List_Class_4Shanbe = jadid ;
-//    }
-//
-//    public List<Class_List_Entity> getList_Class_5Shanbe() {
-//        return this.List_Class_5Shanbe;
-//    }
-//
-//    public void setList_Class_5Shanbe(List<Class_List_Entity> jadid) {
-//        this.List_Class_5Shanbe = jadid ;
-//    }
+
+    //----- Liste kelas ha baraye namayesh dar recycler view ------//
+    List<Class_List_Entity>List_Class_0Shanbe;
+    List<Class_List_Entity>List_Class_1Shanbe;
+    List<Class_List_Entity>List_Class_2Shanbe;
+    List<Class_List_Entity>List_Class_3Shanbe;
+    List<Class_List_Entity>List_Class_4Shanbe;
+    List<Class_List_Entity>List_Class_5Shanbe;
+
+
+    public List<Class_List_Entity> getList_Class_null() {
+        return List_Class_null;
+    }
+
+    public void setList_Class_null(List<Class_List_Entity> list_Class_null) {
+        List_Class_null = list_Class_null;
+    }
+
+    List<Class_List_Entity>List_Class_null;
+
+
+
+//----- Liste class ha ra bar migardanad va set mikonad ------//
+
+    public List<Class_List_Entity> getList_Class_0Shanbe() {
+        return this.List_Class_0Shanbe;
+    }
+
+    public void setList_Class_0Shanbe(List<Class_List_Entity> jadid) {
+       this.List_Class_0Shanbe = jadid ;
+    }
+
+    public List<Class_List_Entity> getList_Class_1Shanbe() {
+        return this.List_Class_1Shanbe;
+    }
+
+    public void setList_Class_1Shanbe(List<Class_List_Entity> jadid) {
+        this.List_Class_1Shanbe = jadid ;
+    }
+
+    public List<Class_List_Entity> getList_Class_2Shanbe() {
+        return this.List_Class_2Shanbe;
+    }
+
+    public void setList_Class_2Shanbe(List<Class_List_Entity> jadid) {
+        this.List_Class_2Shanbe = jadid ;
+    }
+
+    public List<Class_List_Entity> getList_Class_3Shanbe() {
+        return this.List_Class_3Shanbe;
+    }
+
+    public void setList_Class_3Shanbe(List<Class_List_Entity> jadid) {
+        this.List_Class_3Shanbe = jadid ;
+    }
+
+    public List<Class_List_Entity> getList_Class_4Shanbe() {
+        return this.List_Class_4Shanbe;
+    }
+
+    public void setList_Class_4Shanbe(List<Class_List_Entity> jadid) {
+        this.List_Class_4Shanbe = jadid ;
+    }
+
+    public List<Class_List_Entity> getList_Class_5Shanbe() {
+        return this.List_Class_5Shanbe;
+    }
+
+    public void setList_Class_5Shanbe(List<Class_List_Entity> jadid) {
+        this.List_Class_5Shanbe = jadid ;
+    }
 
 
     public String getCash_day() {
@@ -364,7 +385,112 @@ public class Cash extends Application {
     private String Cash_what_date ;
     private Date Cash_fulldate ;
 
+//    -------------------------------------- Context ------------------------------------------
+//    private Context _Context ;
+//
+//    public Context get_Context() {
+//        return _Context;
+//    }
+//
+//    public void set_Context(Context _Context) {
+//        this._Context = _Context;
+//    }
+//
+//    Activity aaaa ;
 
+//  -------------------------------------   WS gereftane liste clas ha -----------------------
+
+//    private void ws_get_class_list (String url, Context context) {
+//
+//        try {
+//
+//            GETAPIRequest getapiRequest = new GETAPIRequest();
+//            getapiRequest.request(context, fetchGetResultListener2, url);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    //Implementing interfaces of FetchDataListener for GET api request
+//    FetchDataListener fetchGetResultListener2 = new FetchDataListener() {
+//
+//        @Override
+//        public void onFetchComplete(JSONObject data) {
+//            RequestQueueService.cancelProgressDialog();
+//            try {
+//                if (data != null) {
+//
+////                    Pars_Json(data.toString());
+//                    Toast.makeText(Cash.this, data.toString(), Toast.LENGTH_SHORT).show();
+//
+//                } else {
+//                    RequestQueueService.showAlert("Error! No data fetched", aaaa);
+//                }
+//
+//            } catch (Exception e) {
+//                RequestQueueService.showAlert("Something went wrong", Cash.this);
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        @Override
+//        public void onFetchFailure(String msg) {
+//            RequestQueueService.cancelProgressDialog();
+//            //Show if any error message is there called from GETAPIRequest class
+//            RequestQueueService.showAlert(msg, Security_Activity.this);
+//        }
+//
+//        @Override
+//        public void onFetchStart() {
+//            //Start showing progressbar or any loader you have
+//            RequestQueueService.showProgressDialog(Security_Activity.this);
+//        }
+//    };
+
+    public String getString_Json() {
+        return String_Json;
+    }
+
+    public void setString_Json(String string_Json) {
+        String_Json = string_Json;
+    }
+
+    private String String_Json ;
+
+    public void ws_get_class_list (String url) {
+
+
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equals("Error!")) {
+
+//                    Toast.makeText(Cash.this, "خطا در اتصال", Toast.LENGTH_LONG).show();
+                    ws_get_class_list(url);
+
+
+                } else {
+
+                     String_Json = response ;
+                }
+            }
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(Cash.this, "خطا در اتصال", Toast.LENGTH_LONG).show();
+                ws_get_class_list(url);
+
+            }
+        };
+
+        StringRequest request = new StringRequest(Request.Method.GET, url, listener, errorListener);
+        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+
+    }
 
 
 }

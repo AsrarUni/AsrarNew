@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_class_list) {
 
-                    Intent goto_classes = new Intent (MainActivity.this , Weekly_Class_Tab_Activity.class);
+                    Intent goto_classes = new Intent (MainActivity.this , Week_Days_Class_activity.class);
                     startActivity(goto_classes);
 
                 }
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         Activity_Main_Cv_Today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Activity_Main_Cv_Today = new Intent (MainActivity.this , Weekly_Class_Tab_Activity.class);
+                Intent Activity_Main_Cv_Today = new Intent (MainActivity.this , Week_Days_Class_activity.class);
                 startActivity(Activity_Main_Cv_Today);
 
 

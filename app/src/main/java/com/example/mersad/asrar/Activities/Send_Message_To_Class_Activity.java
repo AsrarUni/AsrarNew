@@ -205,7 +205,7 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_class_list) {
 
-                    Intent goto_classes = new Intent (Send_Message_To_Class_Activity.this , Weekly_Class_Tab_Activity.class);
+                    Intent goto_classes = new Intent (Send_Message_To_Class_Activity.this , Week_Days_Class_activity.class);
                     startActivity(goto_classes);
 
                 }
@@ -229,9 +229,7 @@ public class Send_Message_To_Class_Activity extends AppCompatActivity {
                     Toast.makeText(Send_Message_To_Class_Activity.this, "test 2 successfull", Toast.LENGTH_LONG).show();
 
                 }
-                if (item.getItemId() ==R.id.nav_exit){
-                  finishAffinity();
-                }
+
 
 
 

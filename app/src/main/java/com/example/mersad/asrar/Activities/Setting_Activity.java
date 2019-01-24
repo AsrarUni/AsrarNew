@@ -119,7 +119,7 @@ public class Setting_Activity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_class_list) {
 
-                    Intent goto_classes = new Intent (Setting_Activity.this , Weekly_Class_Tab_Activity.class);
+                    Intent goto_classes = new Intent (Setting_Activity.this , Week_Days_Class_activity.class);
                     startActivity(goto_classes);
 
                 }

@@ -63,6 +63,7 @@ public class Login_Activity extends AppCompatActivity {
         showContainer_and_Items();
 //        set_unreal_infos();
         set_Listeners();
+
     }
 
     private void set_unreal_infos() {

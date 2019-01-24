@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -29,11 +28,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mersad.asrar.Cash;
-import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Fragments.Find_Classes_By_Name_Fragment;
 import com.example.mersad.asrar.Fragments.Class_List_Fragment;
 import com.example.mersad.asrar.Model.Class_List_Entity;
-import com.example.mersad.asrar.Model.Login_Entity;
 import com.example.mersad.asrar.Model.model_class;
 import com.example.mersad.asrar.Model.model_time;
 import com.example.mersad.asrar.R;
@@ -54,10 +51,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import wiadevelopers.com.library.DivarUtils;
 
-
-public class Weekly_Class_Tab_Activity extends AppCompatActivity {
+public class Week_Days_Class_activity extends AppCompatActivity {
 
     ViewPager viewPager;
     private Toolbar toolbar;
@@ -68,23 +63,13 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
     TextView Weekly_Tv_From_Date_To_Date;
     Typeface custom_font;
 
-//    Class_List_Fragment Shanbe = new Class_List_Fragment();
-//    Class_List_Fragment Yek_Shanbe = new Class_List_Fragment();
-//    Class_List_Fragment Do_Shanbe = new Class_List_Fragment();
-//    Class_List_Fragment Se_Shanbe = new Class_List_Fragment();
-//    Class_List_Fragment Chahar_Shanbe = new Class_List_Fragment();
-//    Class_List_Fragment Panj_Shanbe = new Class_List_Fragment();
-//    Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
-
-
-    Class_List_Fragment Shanbe ;
-    Class_List_Fragment Yek_Shanbe ;
-    Class_List_Fragment Do_Shanbe ;
-    Class_List_Fragment Se_Shanbe ;
-    Class_List_Fragment Chahar_Shanbe ;
-    Class_List_Fragment Panj_Shanbe ;
-    Find_Classes_By_Name_Fragment kanseli_jobrani ;
-
+    Class_List_Fragment Shanbe = new Class_List_Fragment();
+    Class_List_Fragment Yek_Shanbe = new Class_List_Fragment();
+    Class_List_Fragment Do_Shanbe = new Class_List_Fragment();
+    Class_List_Fragment Se_Shanbe = new Class_List_Fragment();
+    Class_List_Fragment Chahar_Shanbe = new Class_List_Fragment();
+    Class_List_Fragment Panj_Shanbe = new Class_List_Fragment();
+    Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
 
     ProgressDialog pDialog;
 
@@ -97,26 +82,23 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
     Date StartOfWeek;
     Date EndOfWeek;
 
-    String Start_day_for_ws;
-    String End_day_for_ws;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weekly_class_tab);
+        setContentView(R.layout.activity_week__days__class_activity);
 
         _Cash = (Cash) getApplication();
         initialize();
 
 //----- tayine rooze hafte baraye har obj -----//
-//        Shanbe.what_day = 0;
-//        Yek_Shanbe.what_day = 1;
-//        Do_Shanbe.what_day = 2;
-//        Se_Shanbe.what_day = 3;
-//        Chahar_Shanbe.what_day = 4;
-//        Panj_Shanbe.what_day = 5;
+        Shanbe.what_day = 0;
+        Yek_Shanbe.what_day = 1;
+        Do_Shanbe.what_day = 2;
+        Se_Shanbe.what_day = 3;
+        Chahar_Shanbe.what_day = 4;
+        Panj_Shanbe.what_day = 5;
 
+//        getApiCall("http://thtc.ir/nazer/api/date", Weekly_Class_Tab_Activity.this);
 
     }
 
@@ -130,36 +112,14 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
         set_typefaces();
         set_listeners();
         setup_progress_dialog();
-
-        get_data();
-        setup_viewpager();
+        request2("http://nazer.thtc.ir/api/class/2018-12-02/2019-01-24/609");
     }
-
-    private void get_data() {
-
-        String Username = DivarUtils.readDataFromStorage(Constant.USER_CODE, null);
-//        String url = Constant.Class_url + Start_day_for_ws + "/" + End_day_for_ws + "/" + Username;
-        String url = Constant.Class_url + "2018-12-02" + "/" +"2019-01-24" + "/" + Username;
-
-//        getApiCall(url, Weekly_Class_Tab_Activity.this);
-
-        request(url);
-    }
-
 
     private void setup_viewpager() {
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(7);
-
-        String Today = _Cash.getCash_day() + "/" + _Cash.getCash_month() + "/" + _Cash.getCash_year();
-
-        Today_Date_Local = Today;
-        Today_Day_Local = _Cash.getCash_what_date();
-        Today_Date = _Cash.getCash_fulldate();
-
-        set_week_days();
 
     }
 
@@ -175,25 +135,25 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_class_list) {
 
-                    Intent goto_classes = new Intent(Weekly_Class_Tab_Activity.this, Weekly_Class_Tab_Activity.class);
+                    Intent goto_classes = new Intent(Week_Days_Class_activity.this, Week_Days_Class_activity.class);
                     startActivity(goto_classes);
 
                 }
                 if (item.getItemId() == R.id.nav_about_us) {
 
-                    Intent about_us = new Intent(Weekly_Class_Tab_Activity.this, About_Us_Activity.class);
+                    Intent about_us = new Intent(Week_Days_Class_activity.this, About_Us_Activity.class);
                     startActivity(about_us);
                     finish();
 
                 }
                 if (item.getItemId() == R.id.nav_setting) {
 
-                    Toast.makeText(Weekly_Class_Tab_Activity.this, "test 1 successfull", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Week_Days_Class_activity.this, "test 1 successfull", Toast.LENGTH_LONG).show();
 
                 }
                 if (item.getItemId() == R.id.nav_test2) {
 
-                    Toast.makeText(Weekly_Class_Tab_Activity.this, "test 2 successfull", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Week_Days_Class_activity.this, "test 2 successfull", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -218,7 +178,7 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
     private void setup_progress_dialog() {
 
-        pDialog = new ProgressDialog(Weekly_Class_Tab_Activity.this);
+        pDialog = new ProgressDialog(Week_Days_Class_activity.this);
         pDialog.setMessage("در حال دریافت اطلاعات ");
         pDialog.setCancelable(false);
 
@@ -257,7 +217,7 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            Window window = Weekly_Class_Tab_Activity.this.getWindow();
+            Window window = Week_Days_Class_activity.this.getWindow();
 
             // clear FLAG_TRANSLUCENT_STATUS flag:
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -266,7 +226,7 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
             // finally change the color
-            window.setStatusBarColor(ContextCompat.getColor(Weekly_Class_Tab_Activity.this, R.color.useful_dark));
+            window.setStatusBarColor(ContextCompat.getColor(Week_Days_Class_activity.this, R.color.useful_dark));
 
         }
     }
@@ -284,150 +244,8 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 
     }
 
-    //---------------------------------------------------------------------
-    private void set_week_days() {
+//    ------------------------------------------------------WS--------------------------------------------------------------------
 
-        try {
-            Today_Date = new SimpleDateFormat("dd/MM/yyyy").parse(Today_Date_Local);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        switch (Today_Day_Local) {
-
-            case "Saturday":
-
-                StartOfWeek = Today_Date;
-                Calendar _sat = Calendar.getInstance();
-                _sat.setTime(Today_Date);
-                _sat.add(Calendar.DATE, 5);
-                EndOfWeek = _sat.getTime();
-                set_Date_Text();
-
-
-                break;
-
-            case "Sunday":
-
-                Calendar sun = Calendar.getInstance();
-                sun.setTime(Today_Date);
-                sun.add(Calendar.DATE, -1);
-                StartOfWeek = sun.getTime();
-
-                Calendar _sun = Calendar.getInstance();
-                _sun.setTime(Today_Date);
-                _sun.add(Calendar.DATE, 4);
-                EndOfWeek = _sun.getTime();
-                set_Date_Text();
-
-                break;
-
-            case "Monday":
-
-                Calendar mon = Calendar.getInstance();
-                mon.setTime(Today_Date);
-                mon.add(Calendar.DATE, -2);
-                StartOfWeek = mon.getTime();
-
-                Calendar _mon = Calendar.getInstance();
-                _mon.setTime(Today_Date);
-                _mon.add(Calendar.DATE, 3);
-                EndOfWeek = _mon.getTime();
-                set_Date_Text();
-
-                break;
-
-            case "Tuesday":
-
-                Calendar tue = Calendar.getInstance();
-                tue.setTime(Today_Date);
-                tue.add(Calendar.DATE, -3);
-                StartOfWeek = tue.getTime();
-
-                Calendar _tue = Calendar.getInstance();
-                _tue.setTime(Today_Date);
-                _tue.add(Calendar.DATE, 2);
-                EndOfWeek = _tue.getTime();
-                set_Date_Text();
-
-
-                break;
-
-            case "Wednesday":
-
-                Calendar wed = Calendar.getInstance();
-                wed.setTime(Today_Date);
-                wed.add(Calendar.DATE, -4);
-                StartOfWeek = wed.getTime();
-
-                Calendar _wed = Calendar.getInstance();
-                _wed.setTime(Today_Date);
-                _wed.add(Calendar.DATE, 1);
-                EndOfWeek = _wed.getTime();
-                set_Date_Text();
-
-
-                break;
-
-            case "Thursday ":
-
-                Calendar thu = Calendar.getInstance();
-                thu.setTime(Today_Date);
-                thu.add(Calendar.DATE, -5);
-                StartOfWeek = thu.getTime();
-
-                EndOfWeek = Today_Date;
-                set_Date_Text();
-                break;
-
-            case "Friday":
-
-                Calendar fri = Calendar.getInstance();
-                fri.setTime(Today_Date);
-                fri.add(Calendar.DATE, -6);
-                StartOfWeek = fri.getTime();
-
-                Calendar _fri = Calendar.getInstance();
-                _fri.setTime(Today_Date);
-                _fri.add(Calendar.DATE, -1);
-                EndOfWeek = _fri.getTime();
-                set_Date_Text();
-                break;
-
-
-        }
-
-    }
-
-
-    private void set_Date_Text() {
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        String start_s = dateFormat.format(StartOfWeek);
-        String end_s = dateFormat.format(EndOfWeek);
-
-        Weekly_Tv_From_Date_To_Date.setText(start_s + "   تا   " + end_s);
-
-        DateFormat dateFormat_ws = new SimpleDateFormat("yyyy-MM-dd");
-
-
-        Start_day_for_ws = dateFormat_ws.format(StartOfWeek);
-        End_day_for_ws = dateFormat_ws.format(EndOfWeek);
-    }
-
-
-    @Override
-    public void onBackPressed() {
-
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
-    }
-
-//
 //    private void getApiCall(String url, Context context) {
 //
 //        try {
@@ -452,11 +270,11 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 //                    Pars_Json(data.toString());
 //
 //                } else {
-//                    RequestQueueService.showAlert("Error! No data fetched", Weekly_Class_Tab_Activity.this);
+//                    RequestQueueService.showAlert("Error! No data fetched", Week_Days_Class_activity.this);
 //                }
 //
 //            } catch (Exception e) {
-//                RequestQueueService.showAlert("Something went wrong", Weekly_Class_Tab_Activity.this);
+//                RequestQueueService.showAlert("Something went wrong", Week_Days_Class_activity.this);
 //                e.printStackTrace();
 //            }
 //        }
@@ -465,19 +283,215 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
 //        public void onFetchFailure(String msg) {
 //            RequestQueueService.cancelProgressDialog();
 //            //Show if any error message is there called from GETAPIRequest class
-//            RequestQueueService.showAlert(msg, Weekly_Class_Tab_Activity.this);
+//            RequestQueueService.showAlert(msg, Week_Days_Class_activity.this);
 //        }
 //
 //        @Override
 //        public void onFetchStart() {
 //            //Start showing progressbar or any loader you have
-//            RequestQueueService.showProgressDialog(Weekly_Class_Tab_Activity.this);
+//            RequestQueueService.showProgressDialog(Week_Days_Class_activity.this);
 //        }
-//
 //    };
 
+//    -----------------------------------------------------------------------------------------------------------------------------
 
-    private void Pars_Json(String data) {
+//    private void set_week_days() {
+//
+//        try {
+//            Today_Date = new SimpleDateFormat("dd/MM/yyyy").parse(Today_Date_Local);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        switch (Today_Day_Local) {
+//
+//            case "Saturday":
+//
+//                StartOfWeek = Today_Date;
+//                Calendar _sat = Calendar.getInstance();
+//                _sat.setTime(Today_Date);
+//                _sat.add(Calendar.DATE, 5);
+//                EndOfWeek = _sat.getTime();
+//                set_Date_Text();
+//                break;
+//
+//            case "Sunday":
+//
+//                Calendar sun = Calendar.getInstance();
+//                sun.setTime(Today_Date);
+//                sun.add(Calendar.DATE, -1);
+//                StartOfWeek = sun.getTime();
+//
+//                Calendar _sun = Calendar.getInstance();
+//                _sun.setTime(Today_Date);
+//                _sun.add(Calendar.DATE, 4);
+//                EndOfWeek = _sun.getTime();
+//                set_Date_Text();
+//
+//                break;
+//
+//            case "Monday":
+//
+//                Calendar mon = Calendar.getInstance();
+//                mon.setTime(Today_Date);
+//                mon.add(Calendar.DATE, -2);
+//                StartOfWeek = mon.getTime();
+//
+//                Calendar _mon = Calendar.getInstance();
+//                _mon.setTime(Today_Date);
+//                _mon.add(Calendar.DATE, 3);
+//                EndOfWeek = _mon.getTime();
+//                set_Date_Text();
+//
+//                break;
+//
+//            case "Tuesday":
+//
+//                Calendar tue = Calendar.getInstance();
+//                tue.setTime(Today_Date);
+//                tue.add(Calendar.DATE, -3);
+//                StartOfWeek = tue.getTime();
+//
+//                Calendar _tue = Calendar.getInstance();
+//                _tue.setTime(Today_Date);
+//                _tue.add(Calendar.DATE, 2);
+//                EndOfWeek = _tue.getTime();
+//                set_Date_Text();
+//
+//
+//                break;
+//
+//            case "Wednesday":
+//
+//                Calendar wed = Calendar.getInstance();
+//                wed.setTime(Today_Date);
+//                wed.add(Calendar.DATE, -4);
+//                StartOfWeek = wed.getTime();
+//
+//                Calendar _wed = Calendar.getInstance();
+//                _wed.setTime(Today_Date);
+//                _wed.add(Calendar.DATE, 1);
+//                EndOfWeek = _wed.getTime();
+//                set_Date_Text();
+//
+//
+//                break;
+//
+//            case "Thursday ":
+//
+//                Calendar thu = Calendar.getInstance();
+//                thu.setTime(Today_Date);
+//                thu.add(Calendar.DATE, -5);
+//                StartOfWeek = thu.getTime();
+//
+//                EndOfWeek = Today_Date;
+//                set_Date_Text();
+//                break;
+//
+//            case "Friday":
+//
+//                Calendar fri = Calendar.getInstance();
+//                fri.setTime(Today_Date);
+//                fri.add(Calendar.DATE, -6);
+//                StartOfWeek = fri.getTime();
+//
+//                Calendar _fri = Calendar.getInstance();
+//                _fri.setTime(Today_Date);
+//                _fri.add(Calendar.DATE, -1);
+//                EndOfWeek = _fri.getTime();
+//                set_Date_Text();
+//                break;
+//
+//
+//        }
+//
+//    }
+//
+//    private void Pars_Json(String data) {
+//
+//        Gson gson = new Gson();
+//
+//        model_time _model_time = gson.fromJson(data, model_time.class);
+//
+//        String miladi_date = _model_time.getDate();
+//        String miladi_day = _model_time.getDay();
+//
+//
+//        String[] parts = miladi_date.split("/");
+//
+//
+//        String Year = parts[0];
+//        String m_d = parts[1];
+//        String[] parts2 = m_d.split("-");
+//        String Month = parts2[0];
+//        String Day = parts2[1];
+//
+//        int year = Integer.parseInt(Year);
+//        int month = Integer.parseInt(Month);
+//        int day = Integer.parseInt(Day);
+//
+//        String Today = Day + "/" + Month + "/" + Year;
+//
+//        Today_Date_Local = Today;
+//        Today_Day_Local = miladi_day;
+//
+//        set_week_days();
+//    }
+//
+//    private void set_Date_Text() {
+//
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+//        String start_s = dateFormat.format(StartOfWeek);
+//        String end_s = dateFormat.format(EndOfWeek);
+//
+//        Weekly_Tv_From_Date_To_Date.setText(start_s + "   تا   " + end_s);
+//
+//    }
+
+
+    private void request2 (String uurrll) {
+        try {
+            final ProgressDialog pDialog;
+            pDialog = new ProgressDialog(Week_Days_Class_activity.this);
+            pDialog.setMessage("در حال اتصال");
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+            Response.Listener<String> listener2 = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    if (response.equals("Error!")) {
+                        pDialog.dismiss();
+                        Toast.makeText(Week_Days_Class_activity.this, "eror", Toast.LENGTH_SHORT).show();
+                    } else {
+                        pDialog.dismiss();
+
+//                        Toast.makeText(_Cash, response, Toast.LENGTH_SHORT).show();
+
+                         String abc = response;
+                         Pars_Json2(response);
+
+                    }
+                }
+            };
+
+            Response.ErrorListener errorListener2 = new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    pDialog.dismiss();
+                    Toast.makeText(Week_Days_Class_activity.this, "خطا در اتصال", Toast.LENGTH_LONG).show();
+                }
+            };
+
+            StringRequest request = new StringRequest(Request.Method.GET, uurrll, listener2, errorListener2);
+            AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+        } catch (Exception e) {
+            Exception a = e;
+        }
+    }
+
+    private void Pars_Json2 (String data) {
         Gson gson = new Gson();
         model_class[] _model_class = gson.fromJson(data, model_class[].class);
 
@@ -487,7 +501,6 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
         List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
         List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
         List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
-
 
 
         for (int i = 0; i < _model_class.length; i++) {
@@ -600,62 +613,18 @@ public class Weekly_Class_Tab_Activity extends AppCompatActivity {
             }
 
         }
+        _Cash.setList_Class_0Shanbe(List_Class0);
+        _Cash.setList_Class_1Shanbe(List_Class1);
+        _Cash.setList_Class_2Shanbe(List_Class2);
+        _Cash.setList_Class_3Shanbe(List_Class3);
+        _Cash.setList_Class_4Shanbe(List_Class4);
+        _Cash.setList_Class_5Shanbe(List_Class5);
 
-//        _Cash.setList_Class_0Shanbe(List_Class0);
-//        _Cash.setList_Class_1Shanbe(List_Class1);
-//        _Cash.setList_Class_2Shanbe(List_Class2);
-//        _Cash.setList_Class_3Shanbe(List_Class3);
-//        _Cash.setList_Class_4Shanbe(List_Class4);
-//        _Cash.setList_Class_5Shanbe(List_Class5);
-
-
-        Shanbe = new Class_List_Fragment(List_Class0);
-         Yek_Shanbe = new Class_List_Fragment(List_Class1);
-         Do_Shanbe = new Class_List_Fragment(List_Class2);
-         Se_Shanbe = new Class_List_Fragment(List_Class3);
-         Chahar_Shanbe = new Class_List_Fragment(List_Class4);
-         Panj_Shanbe = new Class_List_Fragment(List_Class5);
-        Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
+        setup_viewpager();
 
     }
 
-    private void request(String uurrll) {
 
-//----- Eejade dialog dar hale etesal -----//
-        final ProgressDialog pDialog;
-        pDialog = new ProgressDialog(Weekly_Class_Tab_Activity.this);
-        pDialog.setMessage("در حال اتصال");
-        pDialog.setCancelable(false);
-        pDialog.show();
-
-        Response.Listener<String> listener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.equals("Error!")) {
-                    pDialog.dismiss();
-                    Toast.makeText(Weekly_Class_Tab_Activity.this, "eror", Toast.LENGTH_SHORT).show();
-                } else {
-                    pDialog.dismiss();
-                    Pars_Json(response);
-
-                }
-            }
-        };
-
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                pDialog.dismiss();
-                Toast.makeText(Weekly_Class_Tab_Activity.this, "خطا در اتصال", Toast.LENGTH_LONG).show();
-            }
-        };
-
-        StringRequest request = new StringRequest(Request.Method.GET, uurrll, listener, errorListener);
-        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-    }
 
 
 }
-
-
-

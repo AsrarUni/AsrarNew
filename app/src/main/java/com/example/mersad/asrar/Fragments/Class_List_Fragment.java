@@ -1,6 +1,5 @@
 package com.example.mersad.asrar.Fragments;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -31,23 +30,13 @@ public class Class_List_Fragment extends Fragment {
     Cash _Cash;
     List<Class_List_Entity> List_Class;
     ShimmerFrameLayout Shimmer_recycle_ClassList;
-    private TextView empty_view_class;
+    TextView empty_view_class;
     Context _Context;
     Activity _Activity;
-//    public int what_day;
+    public int what_day;
 
     public Class_List_Fragment() {
 
-    }
-//    public Class_List_Fragment(List<Class_List_Entity> List_Class) {
-//
-//        DataList = List_Class ;
-//    }
-
-
-    @SuppressLint("ValidFragment")
-    public Class_List_Fragment(List<Class_List_Entity> dataList) {
-        DataList = dataList;
     }
 
     @Override
@@ -89,44 +78,56 @@ public class Class_List_Fragment extends Fragment {
             empty_view_class = view.findViewById(R.id.empty_view_class);
 
 
-//            switch (what_day) {
-////
-////                case 0:
-////                    DataList = _Cash.getList_Class_0Shanbe();
-////                    break;
-////
-////                case 1:
-////                    if (_Cash.getList_Class_1Shanbe()==null)
-////                        DataList = _Cash.getList_Class_0Shanbe();
-////                    else
-////                    DataList = _Cash.getList_Class_1Shanbe();
-////                    break;
-////
-////                case 2:
-////                    DataList = _Cash.getList_Class_2Shanbe();
-////                    break;
-////
-////                case 3:
-////                    DataList = _Cash.getList_Class_3Shanbe();
-////                    break;
-////
-////                case 4:
-////                    DataList = _Cash.getList_Class_4Shanbe();
-////                    break;
-////
-////                case 5:
-////                    if (_Cash.getList_Class_5Shanbe()==null)
-////                        DataList = _Cash.getList_Class_0Shanbe();
-////                    else
-////                        DataList = _Cash.getList_Class_5Shanbe();
-////                    break;
-////
-////            }
+            switch (what_day) {
+
+                case 0:
+                     if (_Cash.getList_Class_0Shanbe().size()==0)
+                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                     else
+                    DataList = _Cash.getList_Class_0Shanbe();
+                    break;
+
+                case 1:
+                    if (_Cash.getList_Class_1Shanbe().size()==0)
+                        recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                    else
+                    DataList = _Cash.getList_Class_1Shanbe();
+                    break;
+
+                case 2:
+                    if (_Cash.getList_Class_2Shanbe().size()==0)
+                        recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                    else
+                    DataList = _Cash.getList_Class_2Shanbe();
+                    break;
+
+                case 3:
+                    if (_Cash.getList_Class_3Shanbe().size()==0)
+                        recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                    else
+                    DataList = _Cash.getList_Class_3Shanbe();
+                    break;
+
+                case 4:
+                    if (_Cash.getList_Class_4Shanbe().size()==0)
+                        recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                    else
+                    DataList = _Cash.getList_Class_4Shanbe();
+                    break;
+
+                case 5:
+                    if (_Cash.getList_Class_5Shanbe().size()==0)
+                        recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                    else
+                    DataList = _Cash.getList_Class_5Shanbe();
+                    break;
+
+            }
 
             recycle_class_list.setVisibility(View.GONE);
             empty_view_class.setVisibility(View.VISIBLE);
             hideKeyboard(_Activity);
-            new CountDownTimer(3000, 1000) {
+            new CountDownTimer(3000 , 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     hideKeyboard(_Activity);
@@ -140,17 +141,20 @@ public class Class_List_Fragment extends Fragment {
 //                        DataList = _Cash.Fill_List_Class();
 //                        adapter.notifyDataSetChanged();
                     Shimmer_recycle_ClassList.setVisibility(View.GONE);
-
-                    recycle_class_list.setVisibility(View.VISIBLE);
-                    empty_view_class.setVisibility(View.GONE);
-//                    adapter = new Class_List_Adapter(_Context, _Activity, List_Class, what_day);
-                    adapter = new Class_List_Adapter(_Context, _Activity, List_Class);
-
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(_Context, LinearLayoutManager.VERTICAL, false);
-                    recycle_class_list.setLayoutManager(linearLayoutManager);
-                    recycle_class_list.setAdapter(adapter);
-                    recycle_class_list.setItemAnimator(new DefaultItemAnimator());
-
+                    if (DataList==null)
+                    {
+                        empty_view_class.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        empty_view_class.setVisibility(View.GONE);
+                        recycle_class_list.setVisibility(View.VISIBLE);
+                        empty_view_class.setVisibility(View.GONE);
+                        adapter = new Class_List_Adapter(_Context, _Activity, List_Class, what_day);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(_Context, LinearLayoutManager.VERTICAL, false);
+                        recycle_class_list.setLayoutManager(linearLayoutManager);
+                        recycle_class_list.setAdapter(adapter);
+                        recycle_class_list.setItemAnimator(new DefaultItemAnimator());
+                    }
                 }
             }.start();
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.example.mersad.asrar.Activities.Weekly_Class_Tab_Activity">
+        tools:context="com.example.mersad.asrar.Activities.Week_Days_Class_activity">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -88,6 +88,14 @@
                     app:tabTextColor="@color/useful_light">
 
                 </android.support.design.widget.TabLayout>
+
+                <Button
+                    android:id="@+id/start_getdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+
 
             </android.support.design.widget.AppBarLayout>
 
