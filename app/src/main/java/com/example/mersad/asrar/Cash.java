@@ -385,6 +385,65 @@ public class Cash extends Application {
     private String Cash_what_date ;
     private Date Cash_fulldate ;
 
+//----------------------------- END AND START DAY FOR WS ---------------------------------------
+
+    public String getStart_day_for_ws() {
+        return Start_day_for_ws;
+    }
+
+    public void setStart_day_for_ws(String start_day_for_ws) {
+        Start_day_for_ws = start_day_for_ws;
+    }
+
+    public String getEnd_day_for_ws() {
+        return End_day_for_ws;
+    }
+
+    public void setEnd_day_for_ws(String end_day_for_ws) {
+        End_day_for_ws = end_day_for_ws;
+    }
+
+    public String getStart_day_for_show() {
+        return Start_day_for_show;
+    }
+
+    public void setStart_day_for_show(String start_day_for_show) {
+        Start_day_for_show = start_day_for_show;
+    }
+
+    public String getEnd_day_for_show() {
+        return End_day_for_show;
+    }
+
+    public void setEnd_day_for_show(String end_day_for_show) {
+        End_day_for_show = end_day_for_show;
+    }
+
+    private String Start_day_for_ws ;
+    private String End_day_for_ws ;
+    private String Start_day_for_show ;
+    private String End_day_for_show ;
+
+    public Date getS() {
+        return s;
+    }
+
+    public void setS(Date s) {
+        this.s = s;
+    }
+
+    public Date getE() {
+        return e;
+    }
+
+    public void setE(Date e) {
+        this.e = e;
+    }
+
+    private Date s;
+    private Date e;
+
+
 //    -------------------------------------- Context ------------------------------------------
 //    private Context _Context ;
 //

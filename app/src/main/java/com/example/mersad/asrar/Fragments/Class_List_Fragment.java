@@ -2,9 +2,11 @@ package com.example.mersad.asrar.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mersad.asrar.Activities.Week_Days_Class_activity;
 import com.example.mersad.asrar.Cash;
 import com.example.mersad.asrar.Adapter.Class_List_Adapter;
 import com.example.mersad.asrar.Model.Class_List_Entity;
@@ -24,16 +28,17 @@ import java.util.List;
 
 public class Class_List_Fragment extends Fragment {
 
-    RecyclerView recycle_class_list;
-    List<Class_List_Entity> DataList;
-    Class_List_Adapter adapter;
+    public RecyclerView recycle_class_list;
+    public List<Class_List_Entity> DataList;
+    public Class_List_Adapter adapter;
     Cash _Cash;
-    List<Class_List_Entity> List_Class;
+    public List<Class_List_Entity> List_Class;
     ShimmerFrameLayout Shimmer_recycle_ClassList;
     TextView empty_view_class;
     Context _Context;
     Activity _Activity;
     public int what_day;
+    SwipeRefreshLayout ClassList_refresh;
 
     public Class_List_Fragment() {
 
@@ -76,50 +81,64 @@ public class Class_List_Fragment extends Fragment {
             Shimmer_recycle_ClassList = view.findViewById(R.id.Shimmer_recycle_ClassList);
             Shimmer_recycle_ClassList.startShimmer();
             empty_view_class = view.findViewById(R.id.empty_view_class);
+            ClassList_refresh = view.findViewById(R.id.ClassList_refresh);
+
+            ClassList_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    ClassList_refresh.setRefreshing(true);
+
+                    Intent intent = new Intent(_Activity, Week_Days_Class_activity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent);
+                    _Activity.finish();
+                    ClassList_refresh.setRefreshing(false);
+                }
+            });
 
 
             switch (what_day) {
 
                 case 0:
-                     if (_Cash.getList_Class_0Shanbe().size()==0)
-                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
-                     else
-                    DataList = _Cash.getList_Class_0Shanbe();
+                    if (_Cash.getList_Class_0Shanbe().size() == 0)
+                        recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
+                    else
+                        DataList = _Cash.getList_Class_0Shanbe();
                     break;
 
                 case 1:
-                    if (_Cash.getList_Class_1Shanbe().size()==0)
+                    if (_Cash.getList_Class_1Shanbe().size() == 0)
                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
                     else
-                    DataList = _Cash.getList_Class_1Shanbe();
+                        DataList = _Cash.getList_Class_1Shanbe();
                     break;
 
                 case 2:
-                    if (_Cash.getList_Class_2Shanbe().size()==0)
+                    if (_Cash.getList_Class_2Shanbe().size() == 0)
                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
                     else
-                    DataList = _Cash.getList_Class_2Shanbe();
+                        DataList = _Cash.getList_Class_2Shanbe();
                     break;
 
                 case 3:
-                    if (_Cash.getList_Class_3Shanbe().size()==0)
+                    if (_Cash.getList_Class_3Shanbe().size() == 0)
                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
                     else
-                    DataList = _Cash.getList_Class_3Shanbe();
+                        DataList = _Cash.getList_Class_3Shanbe();
                     break;
 
                 case 4:
-                    if (_Cash.getList_Class_4Shanbe().size()==0)
+                    if (_Cash.getList_Class_4Shanbe().size() == 0)
                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
                     else
-                    DataList = _Cash.getList_Class_4Shanbe();
+                        DataList = _Cash.getList_Class_4Shanbe();
                     break;
 
                 case 5:
-                    if (_Cash.getList_Class_5Shanbe().size()==0)
+                    if (_Cash.getList_Class_5Shanbe().size() == 0)
                         recycle_class_list.dispatchWindowSystemUiVisiblityChanged(View.GONE);
                     else
-                    DataList = _Cash.getList_Class_5Shanbe();
+                        DataList = _Cash.getList_Class_5Shanbe();
                     break;
 
             }
@@ -127,7 +146,7 @@ public class Class_List_Fragment extends Fragment {
             recycle_class_list.setVisibility(View.GONE);
             empty_view_class.setVisibility(View.VISIBLE);
             hideKeyboard(_Activity);
-            new CountDownTimer(3000 , 1000) {
+            new CountDownTimer(3000, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     hideKeyboard(_Activity);
@@ -141,11 +160,9 @@ public class Class_List_Fragment extends Fragment {
 //                        DataList = _Cash.Fill_List_Class();
 //                        adapter.notifyDataSetChanged();
                     Shimmer_recycle_ClassList.setVisibility(View.GONE);
-                    if (DataList==null)
-                    {
+                    if (DataList == null) {
                         empty_view_class.setVisibility(View.VISIBLE);
-                    }
-                    else {
+                    } else {
                         empty_view_class.setVisibility(View.GONE);
                         recycle_class_list.setVisibility(View.VISIBLE);
                         empty_view_class.setVisibility(View.GONE);

@@ -584,6 +584,9 @@ public class Security_Activity extends AppCompatActivity {
         String start_s = dateFormat.format(StartOfWeek);
         String end_s = dateFormat.format(EndOfWeek);
 
+        _Cash.setStart_day_for_show(start_s);
+        _Cash.setEnd_day_for_show(end_s);
+
         // TODO: 1/24/2019  ino befrestam qmarz convert kone bad to cash zakhire konam badan estefadash konam to week days
 //        Weekly_Tv_From_Date_To_Date.setText(start_s + "   تا   " + end_s);
 
@@ -592,6 +595,12 @@ public class Security_Activity extends AppCompatActivity {
 
         Start_day_for_ws = dateFormat_ws.format(StartOfWeek);
         End_day_for_ws = dateFormat_ws.format(EndOfWeek);
+
+        _Cash.setS(StartOfWeek);
+        _Cash.setE(EndOfWeek);
+
+        _Cash.setStart_day_for_ws(Start_day_for_ws);
+        _Cash.setEnd_day_for_ws(End_day_for_ws);
 
         String Username = DivarUtils.readDataFromStorage(Constant.USER_CODE, null);
         url_for_getclass = Constant.Class_url + Start_day_for_ws + "/" + End_day_for_ws + "/" + Username;

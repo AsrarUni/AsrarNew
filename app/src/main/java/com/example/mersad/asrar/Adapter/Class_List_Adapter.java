@@ -99,6 +99,8 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
                     .into(ClassListHolder.Class_List_iv_background);
         }
 
+//        notifyDataSetChanged();
+
 //----- listener baraye click long ya short baraye ratfan be safheye bad ya baz kardane menu-----//
         ClassListHolder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -213,7 +215,7 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
                             break;
 
                         case 5:
-                            // TODO: 1/24/2019  chage this to 5 shanbe if not null 
+                            // TODO: 1/24/2019  chage this to 5 shanbe if not null
                             _Cash.setList_Class_5Shanbe(List_Class);
                             alertDialog.dismiss();
                             break;
@@ -274,13 +276,17 @@ public class Class_List_Adapter extends RecyclerView.Adapter<Class_List_Holder> 
             }
         });
 
+
+
+
+
+
     }
 
     @Override
     public int getItemCount() {
         return List_Class.size();
     }
-
 
 
 }

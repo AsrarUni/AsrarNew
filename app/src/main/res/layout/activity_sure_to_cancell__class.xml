@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/useful_light"
+    tools:context=".Activities.Sure_to_Cancell_Class_Activity">
+
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.example.mersad.asrar.Activities.MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/useful_light">
+
+
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/upper_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    style="@style/Toolbar"
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+                    <TextView
+                        android:id="@+id/txttestname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="داشبورد اساتید"
+                        android:textColor="@color/useful_light"
+                        android:textSize="20sp" />
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.CoordinatorLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/upper_layout"
+                android:padding="10dp"
+                android:background="@color/useful_light">
+
+                <com.example.mersad.asrar.Utils.JustifiedTextView
+                    android:id="@+id/jtv_sure_to_cancell_Hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="5dp"
+                    android:padding="15dp" />
+
+                <RelativeLayout
+                    android:id="@+id/devider_sure_cancell"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/jtv_sure_to_cancell_Hint"
+                    android:background="@color/useful_dark" />
+
+
+                <EditText
+                    android:id="@+id/reason_of_cancell_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@+id/devider_sure_cancell"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/selector_edit_text"
+
+                    android:hint="علت کنسل کردن کلاس" />
+
+                <RelativeLayout
+                    android:id="@+id/devider_sure_cancell2"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/reason_of_cancell_class"
+                    android:background="@color/useful_dark" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/devider_sure_cancell2">
+
+                    <Button
+                        android:id="@+id/btn_sure_to_cancell_class_do"
+                        style="@style/Button_Dialog_Class_Opptions_For_Replace"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:text="ازسال درخاست کنسلی" />
+
+                    <Button
+                        android:id="@+id/btn_sure_to_cancell_class_cancell"
+                        style="@style/Button_Dialog_Class_Opptions_For_Replace"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:text="انصراف" />
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            style="@style/NavigationView"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer">
+
+        </android.support.design.widget.NavigationView>
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

@@ -49,6 +49,9 @@
     <string name="Remember_For">یاد آوری برای :</string>
     <string name="message_text">متن پیام</string>
     <string name="replace_note">شما برای این کلاس در تاریخ انتخاب شده قبلا یاد داشتی ثبت کرده اید . آیا میخواهید جایگزین شود ؟</string>
+    <string name="cancell_class_text1">استاد گرامی شما در حال ارسال درخاست کنسل کردن کلاس کد </string>
+    <string name="cancell_class_text2">میباشید . توجه داشته باشید که این درخاست پس از تایید اداره اموزش به اطلاع دانشجویان خواهد رسید . در صورت تمایل برای تشکیل دادن دوباره این کلاس , به عنوان کلاس جبرانی محسوب خواهد شد </string>
+
 
     <string-array name="Date_Array">
         <item>روز</item>

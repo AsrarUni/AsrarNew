@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mersad.asrar.Cash;
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.Fragments.Find_Classes_By_Name_Fragment;
 import com.example.mersad.asrar.Fragments.Class_List_Fragment;
 import com.example.mersad.asrar.Model.Class_List_Entity;
@@ -35,6 +37,7 @@ import com.example.mersad.asrar.Model.model_class;
 import com.example.mersad.asrar.Model.model_time;
 import com.example.mersad.asrar.R;
 import com.example.mersad.asrar.Utils.AppSingleton;
+import com.example.mersad.asrar.Utils.PersianDate;
 import com.example.mersad.asrar.Utils.Util_Tablayout;
 import com.example.mersad.asrar.Volley_WebService.FetchDataListener;
 import com.example.mersad.asrar.Volley_WebService.GETAPIRequest;
@@ -51,6 +54,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import wiadevelopers.com.library.DivarUtils;
+
 
 public class Week_Days_Class_activity extends AppCompatActivity {
 
@@ -62,6 +67,8 @@ public class Week_Days_Class_activity extends AppCompatActivity {
     TabLayout tabLayout;
     TextView Weekly_Tv_From_Date_To_Date;
     Typeface custom_font;
+    ImageButton  weekdays_ib_before , weekdays_ib_next ;
+
 
     Class_List_Fragment Shanbe = new Class_List_Fragment();
     Class_List_Fragment Yek_Shanbe = new Class_List_Fragment();
@@ -82,12 +89,32 @@ public class Week_Days_Class_activity extends AppCompatActivity {
     Date StartOfWeek;
     Date EndOfWeek;
 
+    String url_for_getclass;
+    int next_or_past = 0 ;
+
+    List<Class_List_Entity> List_Class0 ;
+    List<Class_List_Entity> List_Class1 ;
+    List<Class_List_Entity> List_Class2 ;
+    List<Class_List_Entity> List_Class3 ;
+    List<Class_List_Entity> List_Class4 ;
+    List<Class_List_Entity> List_Class5 ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week__days__class_activity);
 
         _Cash = (Cash) getApplication();
+
+         List_Class0 = new ArrayList<Class_List_Entity>();
+         List_Class1 = new ArrayList<Class_List_Entity>();
+         List_Class2 = new ArrayList<Class_List_Entity>();
+         List_Class3 = new ArrayList<Class_List_Entity>();
+         List_Class4 = new ArrayList<Class_List_Entity>();
+         List_Class5 = new ArrayList<Class_List_Entity>();
+
+
         initialize();
 
 //----- tayine rooze hafte baraye har obj -----//
@@ -105,14 +132,16 @@ public class Week_Days_Class_activity extends AppCompatActivity {
 
     private void initialize() {
 
-        change_notification_color();
         find_views();
+        set_Date_Text(next_or_past);
+        change_notification_color();
         setup_toolbar();
         setup_navigation();
         set_typefaces();
         set_listeners();
         setup_progress_dialog();
-        request2("http://nazer.thtc.ir/api/class/2018-12-02/2019-01-24/609");
+//        request2("http://nazer.thtc.ir/api/class/2018-12-02/2019-01-24/609");
+//        request2(url_for_getclass);
     }
 
     private void setup_viewpager() {
@@ -193,6 +222,88 @@ public class Week_Days_Class_activity extends AppCompatActivity {
             }
         });
 
+        weekdays_ib_before.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next_or_past -- ;
+                Shanbe.DataList = null ;
+                Yek_Shanbe.DataList = null ;
+                Do_Shanbe.DataList = null ;
+                Se_Shanbe.DataList = null ;
+                Chahar_Shanbe.DataList = null ;
+                Panj_Shanbe.DataList = null;
+
+                Shanbe.List_Class = null ;
+                Yek_Shanbe.List_Class = null ;
+                Do_Shanbe.List_Class = null ;
+                Se_Shanbe.List_Class = null ;
+                Chahar_Shanbe.List_Class = null ;
+                Panj_Shanbe.List_Class = null ;
+
+//                _Cash.setList_Class_0Shanbe(null);
+//                _Cash.setList_Class_1Shanbe(null);
+//                _Cash.setList_Class_2Shanbe(null);
+//                _Cash.setList_Class_3Shanbe(null);
+//                _Cash.setList_Class_4Shanbe(null);
+//                _Cash.setList_Class_5Shanbe(null);
+
+
+
+//                for (int i = 0 ; i> _Cash.getList_Class_0Shanbe().size();i++ ){
+//                    _Cash
+//
+//                }
+
+
+//                Shanbe.recycle_class_list.notifyAll();
+                Yek_Shanbe.adapter.notifyDataSetChanged();
+
+                set_Date_Text(next_or_past);
+            }
+        });
+
+        weekdays_ib_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next_or_past ++ ;
+                Shanbe.DataList = null ;
+                Yek_Shanbe.DataList = null ;
+                Do_Shanbe.DataList = null ;
+                Se_Shanbe.DataList = null ;
+                Chahar_Shanbe.DataList = null ;
+                Panj_Shanbe.DataList = null;
+
+                Shanbe.List_Class = null ;
+                Yek_Shanbe.List_Class = null ;
+                Do_Shanbe.List_Class = null ;
+                Se_Shanbe.List_Class = null ;
+                Chahar_Shanbe.List_Class = null ;
+                Panj_Shanbe.List_Class = null ;
+
+                _Cash.setList_Class_0Shanbe(null);
+                _Cash.setList_Class_1Shanbe(null);
+                _Cash.setList_Class_2Shanbe(null);
+                _Cash.setList_Class_3Shanbe(null);
+                _Cash.setList_Class_4Shanbe(null);
+                _Cash.setList_Class_5Shanbe(null);
+
+//                List_Class0 = null ;
+//                List_Class1 = null ;
+//                List_Class2 = null ;
+//                List_Class3 = null ;
+//                List_Class4 = null ;
+//                List_Class5 = null ;
+
+//                Shanbe.recycle_class_list.notifyAll();
+                Yek_Shanbe.adapter.notifyDataSetChanged();
+
+
+                set_Date_Text(next_or_past);
+
+
+            }
+        });
+
     }
 
     private void set_typefaces() {
@@ -210,6 +321,8 @@ public class Week_Days_Class_activity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         Weekly_Tv_From_Date_To_Date = findViewById(R.id.Weekly_Tv_From_Date_To_Date);
+        weekdays_ib_before = findViewById(R.id.weekdays_ib_before);
+        weekdays_ib_next = findViewById(R.id.weekdays_ib_next);
 
     }
 
@@ -240,6 +353,7 @@ public class Week_Days_Class_activity extends AppCompatActivity {
         adapter.addFragment(Do_Shanbe, "دو شنبه");
         adapter.addFragment(Yek_Shanbe, "یک شنبه");
         adapter.addFragment(Shanbe, "شنبه");
+
         viewPager.setAdapter(adapter);
 
     }
@@ -448,8 +562,207 @@ public class Week_Days_Class_activity extends AppCompatActivity {
 //
 //    }
 
+// ------------------------------------------------- time -------------------------------------------------
 
-    private void request2 (String uurrll) {
+
+    private void set_Date_Text(int n) {
+
+
+        String start_s = _Cash.getStart_day_for_show();
+        String end_s = _Cash.getEnd_day_for_show();
+        String start_w = _Cash.getStart_day_for_ws();
+        String end_w = _Cash.getEnd_day_for_ws();
+//        ====================================================================================================
+//        ====================================================================================================
+//        ====================================================================================================
+
+//        start show , end show , start web service , end web service
+//        DateFormat ss = new SimpleDateFormat("dd/MM/yyyy");
+//        Date sss = ss.parse(start_s);
+//
+//        Date es = new SimpleDateFormat("dd/MM/yyyy").parse(end_s);
+//        Date sw = new SimpleDateFormat("dd-MM-yyyy").parse(start_w);
+//        Date ew = new SimpleDateFormat("dd-MM-yyyy").parse(end_w);
+
+        Date s = _Cash.getS();
+        Date e = _Cash.getE();
+
+        Date new_s;
+        Date new_e;
+
+//        ------------------------------------------convert----------------------------------------------------------
+
+
+//        String[] parts = miladi_date.split("/");
+//
+//
+//        String Year = parts[0];
+//        String m_d = parts[1];
+//        String[] parts2 = m_d.split("-");
+//        String Month = parts2[0];
+//        String Day = parts2[1];
+
+//        DateFormat dateFormat_new = new SimpleDateFormat("yyyy/MM-dd");
+//        String a = dateFormat_new.parse(start_s);
+
+
+
+
+        // TODO: 1/24/2019  ino befrestam qmarz convert kone bad to cash zakhire konam badan estefadash konam to week days
+
+
+        if (n == 0) {
+
+
+            String[] parts_s_s = start_s.split("/");
+            String parts_s_s_1 = parts_s_s[0]; // year
+            String parts_s_s_2 = parts_s_s[1]; // month
+            String parts_s_s_3 = parts_s_s[2]; // day
+
+            PersianDate date = new PersianDate();
+            String kk =  date.Shamsi(Integer.valueOf(parts_s_s_1),Integer.valueOf(parts_s_s_2),Integer.valueOf(parts_s_s_3));
+            String[] P = kk.split("/");
+            int YearP = Integer.parseInt(P[0]);
+            int MonthP =  Integer.parseInt(P[1]);
+            int DayP = Integer.parseInt(P[2]);
+
+            String shamsi_start_0_y = P[0];
+            String shamsi_start_0_m = P[1];
+            String shamsi_start_0_d = P[2];
+
+            String  shamsi_start_0_ready = shamsi_start_0_y + "/" + shamsi_start_0_m + "/" + shamsi_start_0_d;
+
+            String[] parts_s_e = end_s.split("/");
+            String parts_s_e_1 = parts_s_e[0]; // year
+            String parts_s_e_2 = parts_s_e[1]; // month
+            String parts_s_e_3 = parts_s_e[2]; // day
+
+            PersianDate date_e = new PersianDate();
+            String kkk =  date_e.Shamsi(Integer.valueOf(parts_s_e_1),Integer.valueOf(parts_s_e_2),Integer.valueOf(parts_s_e_3));
+            String[] Pp = kkk.split("/");
+            int YearPp = Integer.parseInt(Pp[0]);
+            int MonthPp =  Integer.parseInt(Pp[1]);
+            int DayPp = Integer.parseInt(Pp[2]);
+
+            String shamsi_start_0_e_y = Pp[0];
+            String shamsi_start_0_e_m = Pp[1];
+            String shamsi_start_0_e_d = Pp[2];
+
+            String  shamsi_start_0_e_ready = shamsi_start_0_e_y + "/" + shamsi_start_0_e_m + "/" + shamsi_start_0_e_d;
+
+            Weekly_Tv_From_Date_To_Date.setText(shamsi_start_0_ready + "   تا   " + shamsi_start_0_e_ready);
+
+            String Username = DivarUtils.readDataFromStorage(Constant.USER_CODE, null);
+            url_for_getclass = Constant.Class_url + start_w + "/" + end_w + "/" + Username;
+
+            _Cash.setList_Class_0Shanbe(null);
+            _Cash.setList_Class_1Shanbe(null);
+            _Cash.setList_Class_2Shanbe(null);
+            _Cash.setList_Class_3Shanbe(null);
+            _Cash.setList_Class_4Shanbe(null);
+            _Cash.setList_Class_5Shanbe(null);
+
+
+
+
+
+//            Class_List_Fragment Shanbe = new Class_List_Fragment();
+//            Class_List_Fragment Yek_Shanbe = new Class_List_Fragment();
+//            Class_List_Fragment Do_Shanbe = new Class_List_Fragment();
+//            Class_List_Fragment Se_Shanbe = new Class_List_Fragment();
+//            Class_List_Fragment Chahar_Shanbe = new Class_List_Fragment();
+//            Class_List_Fragment Panj_Shanbe = new Class_List_Fragment();
+//            Find_Classes_By_Name_Fragment kanseli_jobrani = new Find_Classes_By_Name_Fragment();
+
+            request2(url_for_getclass);
+        } else {
+
+            Calendar sss = Calendar.getInstance();
+            sss.setTime(s);
+            sss.add(Calendar.DATE, ( 7*n ));
+            new_s = sss.getTime();
+
+            Calendar eee = Calendar.getInstance();
+            eee.setTime(e);
+            eee.add(Calendar.DATE, ( 7*n ));
+            new_e = eee.getTime();
+
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            String new_start_s = dateFormat.format(new_s);
+            String new_end_s = dateFormat.format(new_e);
+
+            DateFormat dateFormat_ws = new SimpleDateFormat("yyyy-MM-dd");
+            String new_start_w = dateFormat_ws.format(new_s);
+            String new_end_w = dateFormat_ws.format(new_e);
+
+//            ----------------------------- convert -----------------------------------------------------
+
+            String[] parts_s_s_1 = new_start_s.split("/");
+            String parts_s_s_1_a = parts_s_s_1[0]; // year
+            String parts_s_s_2_a = parts_s_s_1[1]; // month
+            String parts_s_s_3_a = parts_s_s_1[2]; // day
+
+            PersianDate date = new PersianDate();
+            String kk =  date.Shamsi(Integer.valueOf(parts_s_s_1_a),Integer.valueOf(parts_s_s_2_a),Integer.valueOf(parts_s_s_3_a));
+            String[] P = kk.split("/");
+            int YearP = Integer.parseInt(P[0]);
+            int MonthP =  Integer.parseInt(P[1]);
+            int DayP = Integer.parseInt(P[2]);
+
+            String shamsi_start_0_y_a = P[0];
+            String shamsi_start_0_m_a = P[1];
+            String shamsi_start_0_d_a = P[2];
+
+            String  shamsi_start_0_ready_a = shamsi_start_0_y_a + "/" + shamsi_start_0_m_a + "/" + shamsi_start_0_d_a;
+
+            String[] parts_s_e_b = new_end_s.split("/");
+            String parts_s_e_1_b = parts_s_e_b[0]; // year
+            String parts_s_e_2_b = parts_s_e_b[1]; // month
+            String parts_s_e_3_b = parts_s_e_b[2]; // day
+
+            PersianDate date_e = new PersianDate();
+            String kkk =  date_e.Shamsi(Integer.valueOf(parts_s_e_1_b),Integer.valueOf(parts_s_e_2_b),Integer.valueOf(parts_s_e_3_b));
+            String[] Pp = kkk.split("/");
+            int YearPp = Integer.parseInt(Pp[0]);
+            int MonthPp =  Integer.parseInt(Pp[1]);
+            int DayPp = Integer.parseInt(Pp[2]);
+
+            String shamsi_start_0_e_y_b = Pp[0];
+            String shamsi_start_0_e_m_b = Pp[1];
+            String shamsi_start_0_e_d_b = Pp[2];
+
+            String  shamsi_start_0_e_ready_b = shamsi_start_0_e_y_b + "/" + shamsi_start_0_e_m_b + "/" + shamsi_start_0_e_d_b;
+
+
+            Weekly_Tv_From_Date_To_Date.setText(shamsi_start_0_ready_a + "   تا   " + shamsi_start_0_e_ready_b);
+
+            String Username = DivarUtils.readDataFromStorage(Constant.USER_CODE, null);
+            url_for_getclass = Constant.Class_url + new_start_w + "/" + new_end_w + "/" + Username;
+
+            List<Class_List_Entity> List_Class_null = new ArrayList<Class_List_Entity>();
+
+
+            _Cash.setList_Class_0Shanbe(List_Class_null);
+            _Cash.setList_Class_1Shanbe(List_Class_null);
+            _Cash.setList_Class_2Shanbe(List_Class_null);
+            _Cash.setList_Class_3Shanbe(List_Class_null);
+            _Cash.setList_Class_4Shanbe(List_Class_null);
+            _Cash.setList_Class_5Shanbe(List_Class_null);
+
+            request2(url_for_getclass);
+
+
+
+        }
+
+
+    }
+
+
+// ------------------------------- ws baraye gereftane liste clas ha ----------------------------------
+
+    private void request2(String uurrll) {
         try {
             final ProgressDialog pDialog;
             pDialog = new ProgressDialog(Week_Days_Class_activity.this);
@@ -468,8 +781,8 @@ public class Week_Days_Class_activity extends AppCompatActivity {
 
 //                        Toast.makeText(_Cash, response, Toast.LENGTH_SHORT).show();
 
-                         String abc = response;
-                         Pars_Json2(response);
+                        String abc = response;
+                        Pars_Json2(response);
 
                     }
                 }
@@ -491,17 +804,36 @@ public class Week_Days_Class_activity extends AppCompatActivity {
         }
     }
 
-    private void Pars_Json2 (String data) {
+    private void Pars_Json2(String data) {
         Gson gson = new Gson();
         model_class[] _model_class = gson.fromJson(data, model_class[].class);
 
-        List<Class_List_Entity> List_Class0 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class1 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class2 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
-        List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class0 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class1 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class2 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class3 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class4 = new ArrayList<Class_List_Entity>();
+//        List<Class_List_Entity> List_Class5 = new ArrayList<Class_List_Entity>();
 
+//        for (int r = 0 ; r <= List_Class0.size() ; r++)
+//            List_Class0.remove(r) ;
+//        for (int r = 0 ; r < List_Class1.size() ; r++)
+//            List_Class1.remove(r) ;
+//        for (int r = 0 ; r < List_Class2.size() ; r++)
+//            List_Class2.remove(r) ;
+//        for (int r = 0 ; r < List_Class3.size() ; r++)
+//            List_Class3.remove(r) ;
+//        for (int r = 0 ; r < List_Class4.size() ; r++)
+//            List_Class4.remove(r) ;
+//        for (int r = 0 ; r < List_Class5.size() ; r++)
+//            List_Class5.remove(r) ;
+
+        List_Class0.clear();
+        List_Class1.clear();
+        List_Class2.clear();
+        List_Class3.clear();
+        List_Class4.clear();
+        List_Class5.clear();
 
         for (int i = 0; i < _model_class.length; i++) {
 
@@ -522,6 +854,8 @@ public class Week_Days_Class_activity extends AppCompatActivity {
                     // TODO: 1/20/2019 felan hame hoozoor hastand
                     shanbe.isCanseled = false;
 
+
+
                     List_Class0.add(shanbe);
 
                     break;
@@ -538,6 +872,8 @@ public class Week_Days_Class_activity extends AppCompatActivity {
                     yekshanbe.ClassLocation = Class_number_yekshanbe + " کلاس " + Facility_yekshanbe;
                     yekshanbe.ClassTime = "" + _model_class[i].getTime();
                     yekshanbe.isCanseled = false;
+
+
 
                     List_Class1.add(yekshanbe);
 
@@ -556,6 +892,7 @@ public class Week_Days_Class_activity extends AppCompatActivity {
                     doshanbe.ClassTime = "" + _model_class[i].getTime();
                     doshanbe.isCanseled = false;
 
+
                     List_Class2.add(doshanbe);
 
                     break;
@@ -573,6 +910,7 @@ public class Week_Days_Class_activity extends AppCompatActivity {
                     seshanbe.ClassTime = "" + _model_class[i].getTime();
                     seshanbe.isCanseled = false;
 
+
                     List_Class3.add(seshanbe);
 
                     break;
@@ -589,6 +927,7 @@ public class Week_Days_Class_activity extends AppCompatActivity {
                     charshanbe.ClassTime = "" + _model_class[i].getTime();
                     charshanbe.isCanseled = false;
 
+
                     List_Class4.add(charshanbe);
 
                     break;
@@ -604,6 +943,7 @@ public class Week_Days_Class_activity extends AppCompatActivity {
                     panjshanbe.ClassLocation = Class_number_panjshanbe + " کلاس " + Facility_panjshanbe;
                     panjshanbe.ClassTime = "" + _model_class[i].getTime();
                     panjshanbe.isCanseled = false;
+
 
                     List_Class5.add(panjshanbe);
 
@@ -623,8 +963,6 @@ public class Week_Days_Class_activity extends AppCompatActivity {
         setup_viewpager();
 
     }
-
-
 
 
 }

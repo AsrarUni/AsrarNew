@@ -53,8 +53,9 @@
             android:name=".Activities.Remember_Activity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".Activities.Remind_Activity" />
-        <activity android:name=".Activities.Week_Days_Class_activity"></activity>
+        <activity android:name=".Activities.Week_Days_Class_activity" />
         <activity android:name=".Activities.Ws_Activity" />
+        <activity android:name=".Activities.Sure_to_Cancell_Class_Activity"></activity>
     </application>
 
 </manifest>
