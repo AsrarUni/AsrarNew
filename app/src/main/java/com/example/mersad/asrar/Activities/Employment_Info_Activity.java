@@ -1,19 +1,36 @@
 package com.example.mersad.asrar.Activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mersad.asrar.Cash;
+import com.example.mersad.asrar.Constant.Constant;
 import com.example.mersad.asrar.R;
 
+import wiadevelopers.com.library.DivarUtils;
+
 public class Employment_Info_Activity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
 
     Cash _Cash;
     private ImageView Employment_IV_profile_pic;
@@ -35,11 +52,16 @@ public class Employment_Info_Activity extends AppCompatActivity {
     private void initialize() {
         findViews();
         change_notification_color();
+        setup_toolbar();
+        setup_navigation();
         fill_info();
     }
 
 
     private void findViews() {
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         Employment_Tv_Fname = findViewById(R.id.Employment_Tv_Fname);
         Employment_Tv_Lname = findViewById(R.id.Employment_Tv_Lname);
         Employment_Tv_Tel = findViewById(R.id.Employment_Tv_Tel);
@@ -100,6 +122,72 @@ public class Employment_Info_Activity extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat.getColor(Employment_Info_Activity.this, R.color.useful_dark));
 
         }
+    }
+
+    private void setup_navigation() {
+
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.nav_class_list) {
+
+                    Intent goto_classes = new Intent(Employment_Info_Activity.this, Week_Days_Class_activity.class);
+                    startActivity(goto_classes);
+
+                }
+                if (item.getItemId() == R.id.nav_about_us) {
+
+                    Intent about_us = new Intent(Employment_Info_Activity.this, About_Us_Activity.class);
+                    startActivity(about_us);
+                    finish();
+
+                }
+                if (item.getItemId() == R.id.nav_setting) {
+
+                    Intent about_us = new Intent(Employment_Info_Activity.this, Setting_Activity.class);
+                    startActivity(about_us);
+                    finish();
+                }
+                if (item.getItemId() == R.id.nav_test2) {
+
+                    Toast.makeText(Employment_Info_Activity.this, "test 2 successfull", Toast.LENGTH_LONG).show();
+
+                }
+
+                if (item.getItemId() == R.id.nav_close_to_app) {
+                    finishAffinity();
+
+                }
+
+                if (item.getItemId() == R.id.nav_exit_credential) {
+
+                    DivarUtils.writeDataInStorage(Constant.USER_CODE, null);
+                    DivarUtils.writeDataInStorage(Constant.USER_PASS, null);
+                    finishAffinity();
+
+                }
+
+                return false;
+            }
+
+        });
+
+
+    }
+
+    private void setup_toolbar() {
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.main_page); // for set actionbar title
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+
     }
 
 }

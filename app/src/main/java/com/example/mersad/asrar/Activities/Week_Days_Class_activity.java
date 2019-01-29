@@ -186,6 +186,18 @@ public class Week_Days_Class_activity extends AppCompatActivity {
 
                 }
 
+                if (item.getItemId() == R.id.nav_close_to_app) {
+                    finishAffinity();
+
+                }
+
+                if (item.getItemId() == R.id.nav_exit_credential) {
+
+                    DivarUtils.writeDataInStorage(Constant.USER_CODE, null);
+                    DivarUtils.writeDataInStorage(Constant.USER_PASS, null);
+                    finishAffinity();
+
+                }
 
                 return false;
             }
@@ -246,7 +258,6 @@ public class Week_Days_Class_activity extends AppCompatActivity {
 //                _Cash.setList_Class_3Shanbe(null);
 //                _Cash.setList_Class_4Shanbe(null);
 //                _Cash.setList_Class_5Shanbe(null);
-
 
 
 //                for (int i = 0 ; i> _Cash.getList_Class_0Shanbe().size();i++ ){

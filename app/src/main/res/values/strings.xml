@@ -119,6 +119,9 @@
     </string-array>
     <string name="title_activity_reminder_">Reminder_Activity</string>
     <string name="title_of_reminder">عنوان یادآوری :</string>
+    <string name="exit_credential">خروج از حساب کاربری</string>
+    <string name="close_to_app">خروج</string>
+    <string name="guide">راهنما</string>
 
 
 </resources>

@@ -114,7 +114,7 @@
             android:id="@+id/nav_view"
             style="@style/NavigationView"
             app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/activity_main_drawer"
+            app:menu="@menu/activity_week_ays_class_drawer"
             >
 
         </android.support.design.widget.NavigationView>

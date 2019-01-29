@@ -95,10 +95,7 @@ public class Security_Activity extends AppCompatActivity {
         handle_is_has_pass ();
         set_Listeners();
 
-
 //        start_animations();
-
-
 
     }
 

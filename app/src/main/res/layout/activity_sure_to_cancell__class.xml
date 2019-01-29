@@ -57,9 +57,11 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/upper_layout"
-                android:padding="10dp"
-                android:background="@color/useful_light">
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/useful_light"
+                android:padding="10dp">
 
                 <com.example.mersad.asrar.Utils.JustifiedTextView
                     android:id="@+id/jtv_sure_to_cancell_Hint"
@@ -72,8 +74,8 @@
                     android:id="@+id/devider_sure_cancell"
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
-                    android:layout_margin="10dp"
                     android:layout_below="@+id/jtv_sure_to_cancell_Hint"
+                    android:layout_margin="10dp"
                     android:background="@color/useful_dark" />
 
 
@@ -91,16 +93,16 @@
                     android:id="@+id/devider_sure_cancell2"
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
-                    android:layout_margin="10dp"
                     android:layout_below="@+id/reason_of_cancell_class"
+                    android:layout_margin="10dp"
                     android:background="@color/useful_dark" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/devider_sure_cancell2">
+                    android:layout_below="@+id/devider_sure_cancell2"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btn_sure_to_cancell_class_do"
@@ -121,8 +123,6 @@
                         android:text="انصراف" />
 
                 </LinearLayout>
-
-
 
 
             </RelativeLayout>
